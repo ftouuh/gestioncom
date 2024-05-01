@@ -5,13 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SparePartRepair extends Model
+class Product extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'spare_part_id',
-        'repair_id',
+        'id_product',
+        'famille',
+        'reference',
+        'description',
+        'quantite',
+        'Prix_achat',
+        'Prix_unitaire',
+
     ];
+
 
 }
