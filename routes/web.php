@@ -1,56 +1,56 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\PDFController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PDFController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DevisController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\FactureController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 
 
-Route::middleware(['auth','lang'])->group(function () {
+
     Route::get('/', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
     Route::get('/admins',[AdminController::class , 'showAdmins'])->name('admin.admins');
 
 
-    // Users
-    Route::get('/users', [AdminController::class, 'showUsers'])->middleware(['auth', 'verified'])->name('admin.users');
-    Route::put('/users/{id}', [AdminController::class, 'update'])->name('admin.update');
-    Route::post('/users/showModal',[AdminController::class,'showModal'])->name('users.showModal');
-    Route::post('/users/destroy', [AdminController::class, 'destroy'])->name('admin.destroy');
+        // Users
+        Route::get('/users', [UserController::class, 'getUsers'])->middleware(['auth', 'verified'])->name('show.users');
+        Route::post('/users/store', [UserController::class, 'createUser'])->name('add.users');
+        Route::put('/users/update/{id}',[UserController::class,'updateUser'])->name('update.users');
+        Route::delete('/users/destroy', [UserController::class, 'deleteUser'])->name('destroy.users');
 
+        // Clients
+        Route::get('/clients', [ClientController::class, 'getClients'])->middleware(['auth', 'verified'])->name('show.clients');
+        Route::post('/clients/store', [ClientController::class, 'createClient'])->name('add.clients');
+        Route::put('/clients/update/{id}',[ClientController::class,'updateClient'])->name('update.clients');
+        Route::delete('/clients/destroy', [ClientController::class, 'deleteClient'])->name('destroy.clients');
+    
+        //products
+        Route::get('/products',[ProductController::class,'getProducts'])->name('show.products');
+        Route::post('/products/store',[ProductController::class,'createProduct'])->name('add.products');
+        Route::put('/products/update/{id}', [ProductController::class, 'editProduct'])->name('update.products');
+        Route::delete('/products/destroy',[ProductController::class , 'deleteProduct'])->name('destroy.products');
 
-    // Mechanics
-    Route::get('/mechanics',[AdminController::class , 'showMechanics'])->name('admin.mechanics');
-    Route::post('/mechanics/showModalMechanic',[AdminController::class,'showModalMechanic'])->name('admin.showModalMechanic');
-
-    // Vehicles
-    Route::get('/vehicles',[AdminController::class,'showVehicles'])->name('admin.vehicles');
-    Route::post('/vehicle/store',[AdminController::class,'storeVehicle'])->name('admin.storeVehicle');
-    Route::post('/vehicles/showVehiclePics', [AdminController::class, 'showVehiclePics']);
-    Route::put('/vehicles/{id}', [AdminController::class, 'updateVehicle'])->name('admin.updateVehicle');
-    Route::post('/vehicles/destroy', [AdminController::class, 'destroyVehicle'])->name('admin.destroyVehicle');
-
-
-    //Repairs
-    Route::get('/repairs',[AdminController::class,'showRepairs'])->name('admin.repairs');
-    Route::post('/repairs/store',[AdminController::class,'storeRepair'])->name('admin.storeRepair');
-    Route::get('/getMechanics',[AdminController::class,'fetchMechanics'])->name('admin.fetchMechanics');
-    Route::post('/repairs/destroy', [AdminController::class, 'destroyRepair'])->name('admin.destroyRepair');
-    Route::post('/repairs/update-status',[AdminController::class , 'updateRepairStatus'])->name('admin.updateRepairStatus');
-
-
-    //invoice
-
-    // Route::post('/invoices/generate',[AdminController::class ,'generateInvoice'])->name('admin.generateInvoice');
-    Route::get('/invoices',[AdminController::class,'showInvoices'])->name('admin.Invoices');
-    Route::post('/invoices/showModal',[AdminController::class,'showInvoiceModal'])->name('admin.showInvoiceModal');
-    Route::post('/invoice/destroy', [AdminController::class, 'destroyInvoice'])->name('admin.destroyInvoice');
-
-    Route::post('/generate-pdf', [PDFController::class, 'generatePDF'])->name('invoice.generatePdf');
-
+        //Factures
+        Route::get('/factures',[FactureController::class ,'getFacture'])->name('show.factures');
+        Route::post('/factures/store',[FactureController::class,'createFacture'])->name('add.factures');
+        Route::put('/factures/update/{id}',[FactureController::class,'updateFacture'])->name('update.factures');
+        Route::post('/factures/destroy', [FactureController::class, 'deleteFacture'])->name('destroy.factures');
+    
+        //Devis
+        Route::get('/devis',[DevisController::class ,'getDevis'])->name('show.devis');
+        Route::post('/devis/store',[DevisController::class,'createDevis'])->name('add.devis');
+        Route::put('/devis/update/{id}',[DevisController::class,'updateDevis'])->name('update.devis');
+        Route::post('/devis/destroy', [DevisController::class, 'deleteDevis'])->name('destroy.devis');
+    
+    
+        Route::post('/generate-pdf', [PDFController::class, 'generatePDF'])->name('invoice.generatePdf');
+    
 
 
     Route::post('/store', [AdminController::class, 'store'])->name('admin.store');
@@ -61,7 +61,6 @@ Route::middleware(['auth','lang'])->group(function () {
     })->name('products.changeLocale');
 
 
-});
 
 
 Route::middleware('auth')->group(function () {

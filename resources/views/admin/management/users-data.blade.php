@@ -8,7 +8,7 @@
             justify-content: space-between;
         }
 
-        .add-client {
+        .add-user {
             border: 0;
             border-radius: 5px;
             padding: 8px 19px;
@@ -24,8 +24,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="add-new">
-                                <h4 class="card-title">{{ __('Client List') }}</h4>
-                                <button class="btn-primary add-client">{{ __('Add New Client') }}</button>
+                                <h4 class="card-title">{{ __('Users List') }}</h4>
+                                <button class="btn-primary add-user">{{ __('Add New User') }}</button>
                                 <p class="card-title-desc">
 
                                 </p>
@@ -39,38 +39,33 @@
                                 <thead>
                                     <tr>
                                         <th>{{ __('Name') }}</th>
-                                        <th>{{ __('Email') }}</th>
-                                        <th>{{ __('Address') }}</th>
+                                        <th>{{ __('Username') }}</th>
                                         <th>{{ __('Phone Number') }}</th>
                                         <th>{{ __('Start Date') }}</th>
                                         <th>{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
-                                    @foreach ($clients as $client)
-                                    <tr data-client-id="{{ $client->deleteId }}" id="row">
-                                        <td>{{ $client->name }}</td>
-                                        <td>{{ $client->email }}</td>
-                                        <td>{{ $client->address }}</td>
-                                        <td>{{ $client->phoneNumber }}</td>
-                                        <td>{{ $client->created_at }}</td>
+                                    @foreach ($users as $user)
+                                    <tr data-user-id="{{ $user->deleteId }}" id="row">
+                                        <td>{{ $user->nom }} {{ $user->prenom }}</td>
+                                        <td>{{ $user->username }}</td>
+                                        <td>{{ $user->phoneNumber }}</td>
+                                        <td>{{ $user->created_at }}</td>
                                         <td>
-                                            <button type="button" class="btn  edit-client"
-                                                data-client-id="{{ $client->id }}"
-                                                data-client-name="{{ $client->name }}"
-                                                data-client-email="{{ $client->email }}"
-                                                data-client-address="{{ $client->address }}"
-                                                data-client-phone="{{ $client->phoneNumber }}">
+                                            <button type="button" class="btn  edit-user"
+                                                data-user-id="{{ $user->id }}"
+                                                data-user-name="{{ $user->nom }} {{ $user->prenom }}"
+                                                data-user-username="{{ $user->username }}"
+                                                data-user-phone="{{ $user->phoneNumber }}">
                                                 <i class=" ri-edit-2-line "></i>
                                             </button>
-                                            <button type="button" class="btn  delete-client"
-                                                data-client-id="{{ $client->id }}">
+                                            <button type="button" class="btn  delete-user"
+                                                data-user-id="{{ $user->id }}">
                                                 <i class="r ri-delete-bin-3-line"></i>
                                             </button>
-                                            <button type="button" class="btn  show-client"
-                                            data-client-id="{{ $client->id }}">
+                                            <button type="button" class="btn  show-user"
+                                            data-user-id="{{ $user->id }}">
                                             <i class=" ri-file-info-line
                                             "></i>
                                             </button>
@@ -114,7 +109,7 @@
 
 </div>
 
-<!-- Modal for editing client -->
+<!-- Modal for editing user -->
 
 
 @endsection
