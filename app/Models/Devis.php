@@ -9,7 +9,7 @@ class Devis extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id_facture',
+        'id',
         'date_commande',
         'nom_client',
         'prenom_client',
@@ -20,6 +20,7 @@ class Devis extends Model
         'total_TTC',
         'TVA',
         'total_HT',
+        'id_client'
     ];
 
  

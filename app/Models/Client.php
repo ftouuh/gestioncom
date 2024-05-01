@@ -10,13 +10,13 @@ class Client extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_client',
+        'id',
         'nom',
         'prenom',
         'telephone',
         'address',
         'email',
-        'historique'
+
     ];
 
     public function Facture()

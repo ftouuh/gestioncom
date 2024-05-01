@@ -11,23 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('invoices', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->string('additionalCharges');
-            $table->string('totalAmount');
+            $table->String('nom');
+            $table->String('prenom');
+            $table->String('telephone');
+            $table->String('address');
+            $table->String('email');
             $table->timestamps();
-            $table->foreignId('repair_id')->constrained('repairs')->onDelete('cascade');
-    
-            // Define foreign key constraint
         });
     }
-    
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('invoices');
+        Schema::dropIfExists('clients');
     }
 };
