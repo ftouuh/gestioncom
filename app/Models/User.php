@@ -11,61 +11,12 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+
     protected $fillable = [
         'username',
         'nom',
         'prenom',
         'password',
         'phoneNumber'
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
-
-
-
-
-
-    public function repairs()
-    {
-        return $this->hasMany(Repair::class);
-    }
-
-
-    public function vehicles()
-    {
-        return $this->hasMany(Vehicle::class);
-    }
-
-
-    public function tasks()
-    {
-        return $this->belongsToMany(Task::class, 'mechanic_tasks')->withTimestamps();
-    }
-
+    ];   
 }

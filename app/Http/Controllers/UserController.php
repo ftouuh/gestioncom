@@ -8,9 +8,14 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
+    public function index(){
+        return view();
+    }
+
     public function getUsers(){
         $users = User::All();
         return view('admin.management.users-data',compact('users'));
+
     }
 
     public function createUser(Request $request){

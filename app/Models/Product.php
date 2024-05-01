@@ -18,4 +18,5 @@ class Product extends Model
         'Prix_achat',
         'Prix_unitaire',
     ];
+
 }

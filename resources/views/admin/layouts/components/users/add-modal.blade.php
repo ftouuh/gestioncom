@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="addClientForm" method="post" action="{{ route('admin.store') }}">
+                <form id="addClientForm" method="post" action="{{ route('add.clients') }}">
                     @csrf
                     <!-- Form fields for adding a new client -->
                     <div class="mb-3">
