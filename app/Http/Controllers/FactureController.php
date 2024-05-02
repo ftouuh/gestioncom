@@ -13,7 +13,7 @@ class FactureController extends Controller
     }
     public function getFacture(){
         $factures = Facture::All();
-        return view('',compact('views'));
+        return view('admin.management.facture-data',compact('factures'));
     }
 
     public function createFacture(Request $request)

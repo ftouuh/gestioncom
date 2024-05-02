@@ -13,7 +13,7 @@ class ClientController extends Controller
 
     public function getClients(){
         $clients = Client::All();
-        return  view('',compact('clients'));
+        return  view('admin.management.client-data',compact('clients'));
     }
 
     public function createClient(Request $request){

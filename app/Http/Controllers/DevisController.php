@@ -12,8 +12,8 @@ class DevisController extends Controller
         return view();
     }
     public function getDevis(){
-        $Deviss = Devis::All();
-        return view('',compact('views'));
+        $Devis = Devis::All();
+        return view('admin.management.devis-data',compact('Devis'));
     }
 
     public function createDevis(Request $request)

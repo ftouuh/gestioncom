@@ -24,8 +24,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="add-new">
-                                <h4 class="card-title">{{ __('Users List') }}</h4>
-                                <button class="btn-primary add-user">{{ __('Add New User') }}</button>
+                                <h4 class="card-title">{{ __('Products List') }}</h4>
+                                <button class="btn-primary add-user">{{ __('Add New Product') }}</button>
                                 <p class="card-title-desc">
 
                                 </p>
@@ -38,34 +38,37 @@
 
                                 <thead>
                                     <tr>
-                                        <th>{{ __('Name') }}</th>
-                                        <th>{{ __('Username') }}</th>
-                                        <th>{{ __('Phone Number') }}</th>
-                                        <th>{{ __('Start Date') }}</th>
-                                        <th>{{ __('Action') }}</th>
+                                        <th>{{ __('Famille') }}</th>
+                                        <th>{{ __('Reference') }}</th>
+                                        <th>{{ __('Description') }}</th>
+                                        <th>{{ __('Quantite') }}</th>
+                                        <th>{{ __('Prix Achat') }}</th>
+                                        <th>{{ __('Prix Unitaire') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($products as $p)
                                     <tr data-user-id="{{ $user->deleteId }}" id="row">
-                                        <td>{{ $user->nom }} {{ $user->prenom }}</td>
-                                        <td>{{ $user->username }}</td>
-                                        <td>{{ $user->phoneNumber }}</td>
-                                        <td>{{ $user->created_at }}</td>
+                                        <td>{{ $p->famille }}</td>
+                                        <td>{{ $p->reference }}</td>
+                                        <td>{{ $p->description }}</td>
+                                        <td>{{ $p->quantite }}</td>
+                                        <td>{{ $p->Prix_achat }}</td>
+                                        <td>{{ $p->Prix_unitaire }}</td>
                                         <td>
                                             <button type="button" class="btn  edit-user"
-                                                data-user-id="{{ $user->id }}"
-                                                data-user-name="{{ $user->nom }} {{ $user->prenom }}"
-                                                data-user-username="{{ $user->username }}"
-                                                data-user-phone="{{ $user->phoneNumber }}">
+                                                data-user-id="{{ $p->id }}"
+                                                data-user-name="{{ $p->famille }}"
+                                                data-user-username="{{ $user->reference }}"
+                                                data-user-phone="{{ $user->description }}">
                                                 <i class=" ri-edit-2-line "></i>
                                             </button>
                                             <button type="button" class="btn  delete-user"
-                                                data-user-id="{{ $user->id }}">
+                                                data-user-id="{{ $p->id }}">
                                                 <i class="r ri-delete-bin-3-line"></i>
                                             </button>
                                             <button type="button" class="btn  show-user"
-                                            data-user-id="{{ $user->id }}">
+                                            data-user-id="{{ $p->id }}">
                                             <i class=" ri-file-info-line
                                             "></i>
                                             </button>
