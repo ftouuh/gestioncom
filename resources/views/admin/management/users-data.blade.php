@@ -41,22 +41,21 @@
                                         <th>{{ __('Name') }}</th>
                                         <th>{{ __('Username') }}</th>
                                         <th>{{ __('Phone Number') }}</th>
-                                        <th>{{ __('Start Date') }}</th>
                                         <th>{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
-                                    <tr data-user-id="{{ $user->deleteId }}" id="row">
+                                    <tr data-user-id="{{ $user->id }}" id="row">
                                         <td>{{ $user->nom }} {{ $user->prenom }}</td>
                                         <td>{{ $user->username }}</td>
                                         <td>{{ $user->phoneNumber }}</td>
-                                        <td>{{ $user->created_at }}</td>
                                         <td>
-                                            <button type="button" class="btn  edit-user"
+                                            <button type="button" class="btn edit-user"
                                                 data-user-id="{{ $user->id }}"
-                                                data-user-name="{{ $user->nom }} {{ $user->prenom }}"
-                                                data-user-username="{{ $user->username }}"
+                                                data-user-nom="{{ $user->nom }}"
+                                                data-user-prenom="{{ $user->prenom }}"
+                                                data-username="{{ $user->username }}"
                                                 data-user-phone="{{ $user->phoneNumber }}">
                                                 <i class=" ri-edit-2-line "></i>
                                             </button>
@@ -71,7 +70,6 @@
                                             </button>
                                         </td>
                                     </tr>
-
                                     @endforeach
 
                                     @include('admin.layouts.components.users.edit-modal')

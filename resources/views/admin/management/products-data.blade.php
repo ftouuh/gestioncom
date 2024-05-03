@@ -77,10 +77,10 @@
 
                                     @endforeach
 
-                                    @include('admin.layouts.components.users.edit-modal')
-                                    @include('admin.layouts.components.users.add-modal')
-                                    @include('admin.layouts.components.users.confirm-modal')
-                                    @include('admin.layouts.components.users.show-modal')
+                                    @include('admin.layouts.components.products.edit-modal')
+                                    @include('admin.layouts.components.products.add-modal')
+                                    @include('admin.layouts.components.products.confirm-modal')
+                                    @include('admin.layouts.components.products.show-modal')
 
                                 </tbody>
                             </table>

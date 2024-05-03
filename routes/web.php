@@ -32,7 +32,7 @@ use App\Http\Controllers\ProfileController;
     Route::get('/users', [UserController::class, 'getUsers'])->middleware(['auth', 'verified'])->name('show.users');
     Route::post('/users/store', [UserController::class, 'createUser'])->name('add.users');
     Route::put('/users/update/{id}',[UserController::class,'updateUser'])->name('update.users');
-    Route::delete('/users/destroy', [UserController::class, 'deleteUser'])->name('destroy.users');
+    Route::delete('/users/destroy/{id}', [UserController::class, 'deleteUser'])->name('destroy.users');
 
     //products
     Route::get('/products',[ProductController::class,'getProducts'])->name('show.products');

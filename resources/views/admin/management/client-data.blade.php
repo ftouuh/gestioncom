@@ -27,10 +27,9 @@
                                     </tr>
                                 </thead>
 
-
                                 <tbody>
                                     @foreach ($clients as $c)
-                                        <tr data-client-id="{{$client->id}}">
+                                        <tr data-client-id="{{$c->id}}">
                                             <td>{{ $c->nom }}</td>
                                             <td>{{ $c->prenom }}</td>
                                             <td>{{ $c->telephone }}</td>
@@ -53,7 +52,10 @@
 
 
 
-                                        @include('admin.layouts.components.users.edit-modal')
+                                    @include('admin.layouts.components.clients.edit-modal')
+                                    @include('admin.layouts.components.clients.add-modal')
+                                    @include('admin.layouts.components.clients.confirm-modal')
+                                    @include('admin.layouts.components.clients.show-modal')
 
                                     @endforeach
                                 </tbody>

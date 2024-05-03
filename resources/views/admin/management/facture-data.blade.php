@@ -58,8 +58,10 @@
 
 
 
-                                        @include('admin.layouts.components.users.edit-modal')
-
+                                    @include('admin.layouts.components.factures.edit-modal')
+                                    @include('admin.layouts.components.factures.add-modal')
+                                    @include('admin.layouts.components.factures.confirm-modal')
+                                    @include('admin.layouts.components.factures.show-modal')
                                     @endforeach
                                 </tbody>
                             </table>
