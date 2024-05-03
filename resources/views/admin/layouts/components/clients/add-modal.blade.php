@@ -1,12 +1,12 @@
-<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+<div class="modal fade" id="addClientModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addUserModalLabel">Add New User</h5>
+                <h5 class="modal-title" id="addUserModalLabel">Add New Client</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="addUserForm" method="post" action="{{ route('add.users') }}">
+                <form id="addClientForm" method="post" action="{{ route('add.clients') }}">
                     @csrf
                     <!-- Form fields for adding a new user -->
                     <div class="mb-3">
@@ -18,24 +18,21 @@
                         <input type="text" class="form-control" id="prenom" name="prenom" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" value="">
+                        <label for="telephone" class="form-label">Telephone</label>
+                        <input type="text" class="form-control" id="telephone" name="telephone" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="phoneNumber" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" value="">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="">
                     </div>
-                    <div class="mb-3">
-                        <label for="password_confirmation" class="form-label">Confirm password</label>
-                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" value="">
-                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add User</button>
+                        <button type="submit" class="btn btn-primary">Add Client</button>
                     </div>
                 </form>
             </div>
@@ -50,9 +47,9 @@ $(document).ready(function() {
     console.log("Document ready");
 
     // Show modal when the add button is clicked
-    $('.add-user').click(function() {
+    $('.add-client').click(function() {
         // Show the modal
-        $('#addUserModal').modal('show');
+        $('#addClientModal').modal('show');
     });
 
 });

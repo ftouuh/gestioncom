@@ -1,39 +1,43 @@
-<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+<div class="modal fade" id="editClientModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+                <h5 class="modal-title" id="editUserModalLabel">Edit Client</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editUserForm" method="POST">  
+                <form id="editClientForm" method="POST">  
                     @csrf
                     @method('PUT')
                     <!-- Hidden input field to store user ID -->
-                    <input type="hidden" id="editUserId" name="id">
+                    <input type="hidden" id="editClientId" name="id">
                     <!-- Form fields -->
                     <div class="mb-3">
                         <label for="nom" class="form-label">Nom</label>
-                        <input type="text" class="form-control" id="editUsernom" name="nom" value="">
+                        <input type="text" class="form-control" id="editClientnom" name="nom" value="">
                     </div>
                     <div class="mb-3">
                         <label for="prenom" class="form-label">Prenom</label>
-                        <input type="text" class="form-control" id="editUserprenom" name="prenom" value="">
+                        <input type="text" class="form-control" id="editClientprenom" name="prenom" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="editUserusername" name="username" value="">
+                        <label for="telephone" class="form-label">telephone</label>
+                        <input type="text" class="form-control" id="editClientTelephone" name="telephone" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="phoneNumber" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="editUserphoneNumber" name="phoneNumber" value="">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="editClientAddress" name="address" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="editClientEmail" name="email" value="">
                     </div>
                     <!-- Other form fields here -->
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" form="editUserForm" class="btn btn-primary">Save changes</button>
+                <button type="submit" form="editClientForm" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -45,36 +49,40 @@
 $(document).ready(function() {
     console.log("Document ready");
     // Show modal and populate fields when the edit button is clicked
-    $('.edit-user').click(function() {
-        var userId = $(this).data('user-id');
-        var userNom = $(this).data('user-nom');
-        var username = $(this).data('username');
-        var userPrenom = $(this).data('user-prenom');
-        var userPhone = $(this).data('user-phone');
-        console.log(userPhone)
+    $('.edit-client').click(function() {
+        var clientId = $(this).data('client-id');
+        var clientNom = $(this).data('client-nom');
+        var clientPrenom = $(this).data('client-prenom');
+        var clientTelephone = $(this).data('client-telephone');
+        var clientAddress = $(this).data('client-address');
+        var clientEmail = $(this).data('client-email');
+        console.log(clientEmail);
         console.log("Edit button clicked");
 
         // Populate modal fields with user data
-        $('#editUserId').val(userId);
-        $('#editUsernom').val(userNom);
-        $('#editUserprenom').val(userPrenom);
-        $('#editUserusername').val(username);
-        $('#editUserphoneNumber').val(userPhone);
+        $('#editClientId').val(clientId);
+        $('#editClientnom').val(clientNom);
+        $('#editClientprenom').val(clientPrenom);
+        $('#editClientTelephone').val(clientTelephone);
+        $('#editClientAddress').val(clientAddress);
+        $('#editClientEmail').val(clientEmail);
 
         // Show the modal
-        $('#editUserModal').modal('show');
+        $('#editClientModal').modal('show');
     });
 
     // Handle form submission via AJAX using Axios
-    $('#editUserForm').submit(function(event) {
+    $('#editClientForm').submit(function(event) {
         event.preventDefault(); // Prevent default form submission
         console.log("Submit button clicked");
-        var userId = $('#editUserId').val();
+        var clientId = $('#editClientId').val();
+        console.log(clientId);
         var formData = $(this).serialize();
-        console.log(formData)
+        console.log(formData);
+
         // Axios request
-        axios.put('/users/update/' + userId, formData)
-        location.reload()
+        axios.put('/clients/update/' + clientId, formData);
+        location.reload();
     });
 });
 </script>
