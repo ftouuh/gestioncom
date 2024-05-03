@@ -8,7 +8,7 @@
             justify-content: space-between;
         }
 
-        .add-user {
+        .add-product {
             border: 0;
             border-radius: 5px;
             padding: 8px 19px;
@@ -25,7 +25,7 @@
                         <div class="card-body">
                             <div class="add-new">
                                 <h4 class="card-title">{{ __('Products List') }}</h4>
-                                <button class="btn-primary add-user">{{ __('Add New Product') }}</button>
+                                <button class="btn-primary add-product">{{ __('Add New Product') }}</button>
                                 <p class="card-title-desc">
 
                                 </p>
@@ -48,7 +48,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($products as $p)
-                                    <tr data-user-id="{{ $user->deleteId }}" id="row">
+                                    <tr data-product-id="{{ $p->id }}" id="row">
                                         <td>{{ $p->famille }}</td>
                                         <td>{{ $p->reference }}</td>
                                         <td>{{ $p->description }}</td>
@@ -56,19 +56,22 @@
                                         <td>{{ $p->Prix_achat }}</td>
                                         <td>{{ $p->Prix_unitaire }}</td>
                                         <td>
-                                            <button type="button" class="btn  edit-user"
-                                                data-user-id="{{ $p->id }}"
-                                                data-user-name="{{ $p->famille }}"
-                                                data-user-username="{{ $user->reference }}"
-                                                data-user-phone="{{ $user->description }}">
+                                            <button type="button" class="btn edit-product"
+                                                data-product-id="{{ $p->id }}"
+                                                data-product-famille="{{ $p->famille }}"
+                                                data-product-reference="{{ $p->reference }}"
+                                                data-product-description="{{ $p->description }}"
+                                                data-product-quantite="{{ $p->quantite }}"
+                                                data-product-pa="{{ $p->Prix_achat }}"
+                                                data-product-pu="{{ $p->Prix_unitaire }}">
                                                 <i class=" ri-edit-2-line "></i>
                                             </button>
-                                            <button type="button" class="btn  delete-user"
-                                                data-user-id="{{ $p->id }}">
+                                            <button type="button" class="btn  delete-product"
+                                                data-product-id="{{ $p->id }}">
                                                 <i class="r ri-delete-bin-3-line"></i>
                                             </button>
-                                            <button type="button" class="btn  show-user"
-                                            data-user-id="{{ $p->id }}">
+                                            <button type="button" class="btn  show-product"
+                                            data-product-id="{{ $p->id }}">
                                             <i class=" ri-file-info-line
                                             "></i>
                                             </button>
@@ -111,8 +114,5 @@
     </footer>
 
 </div>
-
-<!-- Modal for editing user -->
-
 
 @endsection

@@ -64,3 +64,5 @@
         </div>
     </div>
 </div>
+<script src="assets/libs/jquery/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

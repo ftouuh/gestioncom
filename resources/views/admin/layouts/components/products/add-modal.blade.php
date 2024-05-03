@@ -1,41 +1,41 @@
-<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+<div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addUserModalLabel">Add New User</h5>
+                <h5 class="modal-title" id="addProductModalLabel">Add New Product</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="addUserForm" method="post" action="{{ route('add.users') }}">
+                <form id="addProductForm" method="post" action="{{ route('add.products') }}">
                     @csrf
-                    <!-- Form fields for adding a new user -->
+                    <!-- Form fields for adding a new product -->
                     <div class="mb-3">
-                        <label for="nom" class="form-label">Nom</label>
-                        <input type="text" class="form-control" id="nom" name="nom" value="">
+                        <label for="famille" class="form-label">Famille</label>
+                        <input type="text" class="form-control" id="famille" name="famille" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="prenom" class="form-label">Prenom</label>
-                        <input type="text" class="form-control" id="prenom" name="prenom" value="">
+                        <label for="reference" class="form-label">Reference</label>
+                        <input type="text" class="form-control" id="reference" name="reference" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" value="">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="description" name="description" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="phoneNumber" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="">
+                        <label for="quantite" class="form-label">Quantite</label>
+                        <input type="text" class="form-control" id="quantite" name="quantite" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" value="">
+                        <label for="prixAchat" class="form-label">Prix Achat</label>
+                        <input type="text" class="form-control" id="prixAchat" name="Prix_achat" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="password_confirmation" class="form-label">Confirm password</label>
-                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" value="">
+                        <label for="prixUnitaire" class="form-label">Prix Unitaire</label>
+                        <input type="text" class="form-control" id="prixUnitaire" name="Prix_unitaire" value="">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add User</button>
+                        <button type="submit" class="btn btn-primary">Add Product</button>
                     </div>
                 </form>
             </div>
@@ -50,11 +50,9 @@ $(document).ready(function() {
     console.log("Document ready");
 
     // Show modal when the add button is clicked
-    $('.add-user').click(function() {
+    $('.add-product').click(function() {
         // Show the modal
-        $('#addUserModal').modal('show');
+        $('#addProductModal').modal('show');
     });
-
 });
 </script>
-

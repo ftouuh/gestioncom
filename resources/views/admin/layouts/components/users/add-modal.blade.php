@@ -54,7 +54,6 @@ $(document).ready(function() {
         // Show the modal
         $('#addUserModal').modal('show');
     });
-
 });
 </script>
 

@@ -19,7 +19,7 @@ class ProductController extends Controller
 
     }
 
-    public function creatProduct(Request $request){
+    public function createProduct(Request $request){
         $validatedData= $request->validate([
             'famille'=>'required|String',
             'reference'=>'required|String',
@@ -32,7 +32,7 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
-    public function updateProduct(Request $request,$id){
+    public function editProduct(Request $request,$id){
         $validatedData= $request->validate([
             'famille'=>'required|String',
             'reference'=>'required|String',
