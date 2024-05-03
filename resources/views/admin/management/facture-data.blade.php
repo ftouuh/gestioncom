@@ -24,7 +24,12 @@
                         <div class="card-body">
 
                             <h4 class="card-title">Factures List</h4>
+<<<<<<< HEAD
                             <button class="btn-primary add-product">{{ __('Add New Product') }}</button>
+=======
+                            <button class="btn-primary add-facture">{{ __('Add New Facture') }}</button>
+                                <p class="card-title-desc">
+>>>>>>> 4e60c59772437af2c525e25eb11db60e963e73db
                             <p class="card-title-desc">
                             </p>
 
@@ -46,7 +51,7 @@
 
                                 <tbody>
                                     @foreach ($factures as $f)
-                                        <tr data-client-id="{{$client->id}}">
+                                        <tr data-client-id="{{$f->id}}">
                                             <td>{{ $f->nom_client }} {{ $f->prenom_client }}</td>
                                             <td>{{ $f->date_commande }}</td>
                                             <td>{{ $f->versement }}</td>
@@ -70,7 +75,11 @@
                                         </tr>
 
 
+<<<<<<< HEAD
                                         @endforeach
+=======
+                                    @endforeach
+>>>>>>> 4e60c59772437af2c525e25eb11db60e963e73db
                                     @include('admin.layouts.components.factures.edit-modal')
                                     @include('admin.layouts.components.factures.add-modal')
                                     @include('admin.layouts.components.factures.confirm-modal')
@@ -101,5 +110,10 @@
         </div>
     </footer>
 </div>
+<<<<<<< HEAD
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 @endsection
+=======
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+>>>>>>> 4e60c59772437af2c525e25eb11db60e963e73db

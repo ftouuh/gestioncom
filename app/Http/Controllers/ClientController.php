@@ -31,7 +31,7 @@ class ClientController extends Controller
 
     public function editClient(Request $request,$id){
 
-        $client =  Client::findOrFail($id);
+       
 
         $validatedData = $request->validate([
             'nom'=>'required|String|max:255',
@@ -40,7 +40,7 @@ class ClientController extends Controller
             'address'=>'required|String|max:255',
             'email'=>'required|email|max:255'
         ]);
-
+        $client =  Client::findOrFail($id);
         $client->update($validatedData);
         return redirect()->back();
     }

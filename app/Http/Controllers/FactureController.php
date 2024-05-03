@@ -22,11 +22,13 @@ class FactureController extends Controller
         'date_commande'=>'required|Date',
         'nom_client'=>'required|String',
         'prenom_client'=>'required|String',
-        'versement'=>'Number',
-        'reste'=>'Number',
+        'versement'=>'Numeric',
+        'reste'=>'Numeric',
         'saisi_par'=>'String',
         'saisi_le'=>'Date',
-        'total_TTC'=>'required|Number',
+        'total_TTC'=>'required|Numeric',
+        'TVA'=>'Numeric',
+        'total_HT'=>'Numeric',
 
         ]);
 
