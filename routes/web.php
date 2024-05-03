@@ -38,14 +38,14 @@ use App\Http\Controllers\ProfileController;
     Route::get('/products',[ProductController::class,'getProducts'])->name('show.products');
     Route::post('/products/store',[ProductController::class,'createProduct'])->name('add.products');
     Route::put('/products/update/{id}', [ProductController::class, 'editProduct'])->name('update.products');
-    Route::delete('/products/destroy',[ProductController::class , 'deleteProduct'])->name('destroy.products');
+    Route::delete('/products/destroy/{id}',[ProductController::class , 'deleteProduct'])->name('destroy.products');
 
 
         // Clients
         Route::get('/clients', [ClientController::class, 'getClients'])->middleware(['auth', 'verified'])->name('show.clients');
         Route::post('/clients/store', [ClientController::class, 'createClient'])->name('add.clients');
         Route::put('/clients/update/{id}',[ClientController::class,'editClient'])->name('update.clients');
-        Route::delete('/clients/destroy/{id}', [ClientController::class, 'deleteClient'])->name('destroy.clients');
+        Route::delete('/clients/destroy/{i', [ClientController::class, 'deleteClient'])->name('destroy.clients');
     
         //products
         Route::get('/products',[ProductController::class,'getProducts'])->name('show.products');
