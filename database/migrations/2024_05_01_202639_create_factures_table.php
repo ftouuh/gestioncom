@@ -14,8 +14,12 @@ return new class extends Migration
         Schema::create('factures', function (Blueprint $table) {
             $table->id();
             $table->date('date_commande');
+            $table->integer('qte');
             $table->string('nom_client');
             $table->string('prenom_client');
+            $table->string('ref_p');
+            $table->string('desc_p');
+            $table->string('mode_reglement');
             $table->decimal('versement', 10, 2); // Assuming decimal field for monetary values
             $table->decimal('reste', 10, 2);
             $table->string('saisi_par');
@@ -25,6 +29,8 @@ return new class extends Migration
             $table->decimal('total_HT', 10, 2);
             $table->unsignedBigInteger('id_client');
             $table->foreign('id_client')->references('id')->on('clients')->ondelete('cascade');
+            $table->unsignedBigInteger('id_produit');
+            $table->foreign('id_produit')->references('id')->on('products')->ondelete('cascade');
             $table->timestamps();
         });
     }

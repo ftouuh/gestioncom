@@ -13,6 +13,10 @@ class Facture extends Model
         'date_commande',
         'nom_client',
         'prenom_client',
+        'qte',
+        'ref_p',
+        'desc_p',
+        'mode_reglement',
         'versement',
         'reste',
         'saisi_par',
@@ -20,7 +24,8 @@ class Facture extends Model
         'total_TTC',
         'TVA',
         'total_HT',
-        'id_client'
+        'id_client',
+        'id_produit',
     ];
 
     public function Client()

@@ -8,7 +8,7 @@
             justify-content: space-between;
         }
 
-        .add-product {
+        .add-facture {
             border: 0;
             border-radius: 5px;
             padding: 8px 19px;
@@ -24,7 +24,6 @@
                         <div class="card-body">
 
                             <h4 class="card-title">Factures List</h4>
-                            <button class="btn-primary add-product">{{ __('Add New Product') }}</button>
                             <button class="btn-primary add-facture">{{ __('Add New Facture') }}</button>
                                 <p class="card-title-desc">
                             <p class="card-title-desc">
@@ -44,8 +43,6 @@
                                         <th>{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     @foreach ($factures as $f)
                                         <tr data-facture-id="{{$f->id}}">

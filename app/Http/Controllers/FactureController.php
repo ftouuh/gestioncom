@@ -20,8 +20,12 @@ class FactureController extends Controller
     {
         $validatedData = $request->validate([
         'date_commande'=>'required|Date',
+        'qte'=>'required|Numeric',
         'nom_client'=>'required|String',
         'prenom_client'=>'required|String',
+        'ref_p'=>'required|String',
+        'desc_p'=>'required|String',
+        'mode_reglement'=>'required|String',
         'versement'=>'Numeric',
         'reste'=>'Numeric',
         'saisi_par'=>'String',
@@ -29,7 +33,8 @@ class FactureController extends Controller
         'total_TTC'=>'required|Numeric',
         'TVA'=>'Numeric',
         'total_HT'=>'Numeric',
-
+        'id_client'=>'required|String',
+        'id_produit'=>'required|String',
         ]);
 
         $newFacture = Facture::create($validatedData);
@@ -41,14 +46,21 @@ class FactureController extends Controller
         
         $validatedData = $request->validate([
             'date_commande'=>'required|Date',
+            'qte'=>'required|Numeric',
             'nom_client'=>'required|String',
             'prenom_client'=>'required|String',
-            'versement'=>'numeric',
-            'reste'=>'numeric',
+            'ref_p'=>'required|String',
+            'desc_p'=>'required|String',
+            'mode_reglement'=>'required|String',
+            'versement'=>'Numeric',
+            'reste'=>'Numeric',
             'saisi_par'=>'String',
             'saisi_le'=>'Date',
-            'total_TTC'=>'required|numeric',
-    
+            'total_TTC'=>'required|Numeric',
+            'TVA'=>'Numeric',
+            'total_HT'=>'Numeric',
+            'id_client'=>'required|String',
+            'id_produit'=>'required|String',
             ]);
         
             $facture = Facture::findOrFail($id);
