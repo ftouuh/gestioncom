@@ -57,7 +57,7 @@ use App\Http\Controllers\ProfileController;
     Route::get('/factures',[FactureController::class ,'getFacture'])->name('show.factures');
     Route::post('/factures/store',[FactureController::class,'createFacture'])->name('add.factures');
     Route::put('/factures/update/{id}',[FactureController::class,'updateFacture'])->name('update.factures');
-    Route::post('/factures/destroy', [FactureController::class, 'deleteFacture'])->name('destroy.factures');
+    Route::post('/factures/destroy/{id}', [FactureController::class, 'deleteFacture'])->name('destroy.factures');
 
     //Devis
     Route::get('/devis',[DevisController::class ,'getDevis'])->name('show.devis');

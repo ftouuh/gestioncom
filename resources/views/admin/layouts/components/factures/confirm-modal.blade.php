@@ -11,7 +11,7 @@
                     @method('DELETE')
                     <input type="hidden" id="deleteId" name="deleteId" value="" />
                 </form>
-                Are you sure you want to delete user with ID: <span id="userIdPlaceholder"></span> ?
+                Are you sure you want to delete user with ID: <span id="factureIdPlaceholder"></span> ?
             </div>
 
             <div class="modal-footer">
@@ -26,18 +26,18 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('.delete-user').click(function() {
-            var userId = $(this).data('user-id'); // Retrieve the user ID
-            $('#deleteId').val(userId); // Populate the deleteId input field with the user ID
-            $('#userIdPlaceholder').text(userId); // Populate the user ID placeholder in the modal body
+        $('.delete-facture').click(function() {
+            var factureId = $(this).data('facture-id'); // Retrieve the user ID
+            $('#deleteId').val(factureId); // Populate the deleteId input field with the user ID
+            $('#factureIdPlaceholder').text(factureId); // Populate the user ID placeholder in the modal body
             $('#confirmDeleteModal').modal('show'); // Show the confirmation modal
         });
 
         // Handle confirmation of deletion
         $('#confirmDeleteBtn').click(function() {
-            var userId = $('#deleteId').val()
+            var factureId = $('#deleteId').val()
             var formData = $('#deleteForm').serialize();
-            axios.delete('/users/destroy/'+ userId, formData)
+            axios.delete('/factures/destroy/'+ factureId, formData)
             location.reload();
         });
 
