@@ -15,6 +15,10 @@ class ClientController extends Controller
         $clients = Client::All();
         return  view('admin.management.client-data',compact('clients'));
     }
+    public function getClientsById($id){
+        $client = Client::findOrFail($id);
+        return response()->json($client);
+    }
 
     public function createClient(Request $request){
         $validatedData = $request->validate([

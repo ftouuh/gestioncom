@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\Facture;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class FactureController extends Controller
@@ -13,7 +15,9 @@ class FactureController extends Controller
     }
     public function getFacture(){
         $factures = Facture::All();
-        return view('admin.management.facture-data',compact('factures'));
+        $clients = Client::All();
+        $products = Product::All();
+        return view('admin.management.facture-data',compact('factures','clients','products'));
     }
 
     public function createFacture(Request $request)

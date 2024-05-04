@@ -17,8 +17,7 @@ return new class extends Migration
             $table->integer('qte');
             $table->string('nom_client');
             $table->string('prenom_client');
-            $table->string('ref_p');
-            $table->string('desc_p');
+            $table->json('products');
             $table->string('mode_reglement');
             $table->decimal('versement', 10, 2); // Assuming decimal field for monetary values
             $table->decimal('reste', 10, 2);

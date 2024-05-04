@@ -34,6 +34,9 @@
                                     <tr>
                                         <th>{{ __('Client') }}</th>
                                         <th>{{ __('Date Commande') }}</th>
+                                        <th>{{ __('Produit') }}</th>
+                                        <th>{{ __('Quantité') }}</th>
+                                        <th>{{ __('Mode de reglement') }}</th>
                                         <th>{{ __('Versement') }}</th>
                                         <th>{{ __('Reste') }}</th>
                                         <th>{{ __('Date Saisi') }}</th>
@@ -48,6 +51,9 @@
                                         <tr data-facture-id="{{$f->id}}">
                                             <td>{{ $f->nom_client }} {{ $f->prenom_client }}</td>
                                             <td>{{ $f->date_commande }}</td>
+                                            <td>{{ $f->ref_p }}</td>
+                                            <td>{{ $f->qte }}</td>
+                                            <td>{{ $f->mode_reglement }}</td>
                                             <td>{{ $f->versement }}</td>
                                             <td>{{ $f->reste }}</td>
                                             <td>{{ $f->saisi_le }}</td>
@@ -75,8 +81,6 @@
                                             </button>
                                         </td>
                                         </tr>
-
-
                                         @endforeach
 
                                     @include('admin.layouts.components.factures.edit-modal')

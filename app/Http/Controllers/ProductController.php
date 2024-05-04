@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+  
 class ProductController extends Controller
 {
 
@@ -16,9 +16,16 @@ class ProductController extends Controller
     public function getProducts(){
         $products = Product::All();
         return view('admin.management.products-data',compact('products'));
-
+    }
+    public function getProductsJSON(){
+        $products = Product::all(['id', 'reference', 'description']);
+        return response()->json(['products' => $products]);
     }
 
+    public function getProductById($id){
+        $product = Product::findOrFail($id);
+        return response()->json($product);
+    }
     public function createProduct(Request $request){
         $validatedData= $request->validate([
             'famille'=>'required|String',
