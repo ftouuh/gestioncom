@@ -22,8 +22,8 @@
             margin-bottom:.3rem;
         }
         .products-wrapper{
-            background-color:red;
-            color:white;
+            background-color:rgb(242, 242, 242);
+            color:black;
             padding:1rem;
             border-radius:10px;
             display: flex;
@@ -34,6 +34,9 @@
             display: flex;
             flex-direction:column;
             gap:4px;
+        }
+        #delSelect{
+            transform:scale(.8)
         }
     </style>
         <div class="modal-dialog modal-dialog-centered">
@@ -57,29 +60,30 @@
                         <div class="products-wrapper">
                             <div class="header">
                             <label for="" class="form-label">Les Produits</label>
-                            <button id="plus">+</button>
+                            <button id="plus" class="btn btn-primary">&plus;</button>
                             </div>
                             <div class="mb-3">
                                 <div class="selects">
-                                    <div class="mb-3" id="s1">
-                                        <select name="id_produit" id="id_produit" class="form-select">
-                                        <option selected value="">-</option>
+                                    <div class="mb-3 product" id="s1">
+                                        <select name="s1" id="id_produit" class="form-select">
+                                        <option selected value="">Choisi un produit</option>
                                             @foreach($products as $product)
                                                 <option value="{{ $product->id }}">{{ $product->ref }} {{ $product->description }}</option>
                                             @endforeach
                                         </select>
-                                        <button id="delSelect" class="s1" type='button' onclick="deleteSelect(event)"></button>
+                                        <div class="mb-3">
+                                            <label  class="form-label"></label>
+                                            <input type="number" class="form-control" id="qte" name="s1"  placeholder="Quantité">
+                                        </div>
+                                        <button id="delSelect" class="s1 btn btn-danger" type='button' onclick="deleteSelect(event)">&#10005;</button>
+                                        <hr>
                                     </div>
+                                    
 
                                 </div>
-                                <button class="annuler">Annuler</button>
-                                <button class="confirmer">Confirmer</button>
+                                <button class="annuler btn btn-primary" disabled>Annuler</button>
+                                <button class="confirmer  btn  btn-primary">Confirmer</button>
                             </div>
-
-                        </div>
-                        <div class="mb-3">
-                            <label for="date_commande" class="form-label">Quantité</label>
-                            <input type="number" class="form-control" id="qte" name="qte">
                         </div>
                         <input type="hidden" class="form-control" id="nom_client" name="nom_client" value="">
                         <input type="hidden" class="form-control" id="prenom_client" name="prenom_client" value="">
@@ -138,6 +142,10 @@
 
             var products = [];
             var s = 1
+            var confirmed = 0;
+            var ttc = 0;
+            var tva = 0;
+            var ht = 0;
             // Show modal when the add button is clicked
             $('.add-facture').click(function() {
                 $('#addFactureModal').modal('show');
@@ -179,19 +187,7 @@
                     console.error('Error fetching client data:', error);
                 }
             });
-            $('#qte').change(function(){
-                if($('#pu').val() != '' && $('#qte').val() != ''){
-                    const pu = parseFloat($('#pu').val());
-                    const qte = parseFloat($('#qte').val());
-                    const ttc =  pu*qte;
-                    const tva = ttc/6;
-                    const ht =  ttc - tva;
 
-                    $('#total_ttc').val(ttc.toFixed(2));
-                    $('#tva').val(tva);
-                    $('#total_ht').val(ht);
-                }
-            })
 
             $('#plus').click(async function(e){
                 e.preventDefault();
@@ -201,38 +197,116 @@
                 const products = res.data.products;
                 s++;
                 startHTML = `<div class="mb-3" id="s${s}">
-                                <select name="id_produit" id="id_produit" class="form-select">
-                                <option selected value="">-</option>`;
+                                <select name="s${s}" id="id_produit" class="form-select">
+                                <option selected value="">Choisi un produit</option>`;
                 
                 products.forEach(p => {
-                    startHTML += `<option value="${p.id}">${p.reference}${p.description}</option>`
+                    startHTML += `<option value="${p.id}">${p.reference} ${p.description}</option>`
                 });
                 startHTML += `</select>
-                            <button id="delSelect" class="s${s}" type='button' onclick="deleteSelect(event)"></button>
+                <div class="mb-3">
+                            <label  class="form-label"></label>
+                            <input type="number" class="form-control" id="qte" name="s${s}"  placeholder="Quantité">
+                        </div>
+                            <button id="delSelect" class="s${s} btn btn-danger" type='button' onclick="deleteSelect(event)">&#10005;</button>
+                            <hr>
                             </div>`
+
                 wrapper.append(startHTML);
-                console.log(startHTML)
             })
-            $(".confirmer").click(async function(e){
-                e.preventDefault();
+            $(".confirmer").click(async function (e) {
+    e.preventDefault();
 
-                const selects = document.querySelectorAll('#id_produit');
-
-                selects.forEach(async s => {
-                    const id = s.value;
-
-                    try {
-                        const res = await axios.get('/products/'+ id);
-                        const p = res.data
-                        products.push([p.id,p.reference,p.description,p.Prix_unitaire])
-                    } catch (error) {
-                        console.log(error)
-                    }
-                });
-                console.log(products)
+    const selects = document.querySelectorAll('#id_produit');
+    const annuler = document.querySelector('.annuler');
+    const confirmer = document.querySelector('.confirmer');
+    const plus = document.querySelector('#plus');
+    const delSelect = document.querySelectorAll('#delSelect');
+    const qtes = document.querySelectorAll('#qte');
+    qtes.forEach(q => {
+                q.disabled = true;
             });
 
-            
+            delSelect.forEach(d => {
+                d.disabled = true;
+            });
+            annuler.disabled = false;
+            plus.disabled = true;
+            confirmer.disabled = true;
+    selects.forEach(async s => {
+        const id = s.value;
+        const ss = s.name;
+        let qte = 0;
+
+        qtes.forEach(q => {
+            if (q.name === ss) {
+                qte = q.value;
+            }
+        });
+
+        s.disabled = true;
+        confirmed = 1;
+
+        if (id == "") {
+            return;
+        }
+
+        try {
+            const res = await axios.get('/products/' + id);
+            const p = res.data;
+
+            products.push([p.id, p.reference, p.description, p.Prix_unitaire, qte]);
+
+            let ttc = 0;
+            let tva = 0;
+            let ht = 0;
+
+            products.forEach(p => {
+                ttc += parseFloat(p[3]) * parseInt(p[4]);
+            });
+
+            tva = ttc / 6;
+            ht = ttc - tva;
+
+            $('#total_ttc').val(ttc.toFixed(2));
+            $('#tva').val(tva.toFixed(2));
+            $('#total_ht').val(ht.toFixed(2));
+        } catch (error) {
+            console.log(error);
+        }
+    });
+
+    console.log(products);
+});
+
+
+            $(".annuler").click(function(e){
+                e.preventDefault();
+                    products = [];
+
+                    const  annuler = document.querySelector('.annuler');
+                    const  confirmer = document.querySelector('.confirmer');
+                    const  plus = document.querySelector('#plus');
+                    const  delSelect = document.querySelectorAll('#delSelect');
+                    const selects = document.querySelectorAll('#id_produit');
+                    const qtes = document.querySelectorAll('#qte');
+                    $('#total_ttc').val('');
+                    $('#tva').val('');
+                    $('#total_ht').val('');
+                        qtes.forEach(q => {
+                            q.disabled = false;
+                        });
+                    selects.forEach(s => {
+                            s.disabled = false;
+                    });
+                        delSelect.forEach(d => {
+                            d.disabled = false;
+                        })
+                    plus.disabled = false;
+                    annuler.disabled = true;
+                    confirmer.disabled = false;
+                    console.log(products);
+            })
         });
     </script>
     <script>

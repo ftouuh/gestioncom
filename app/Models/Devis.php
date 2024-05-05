@@ -10,18 +10,20 @@ class Devis extends Model
     use HasFactory;
     protected $fillable = [
         'id',
+        'devis_numero',
         'date_commande',
-        'nom_client',
-        'prenom_client',
+        'societe',
+        'ice',
+        'products',
+        'mode_reglement',
         'versement',
         'reste',
         'saisi_par',
-        'saisi_le ',
+        'date_devis',
         'total_TTC',
         'TVA',
         'total_HT',
-        'id_client'
+        'str_ttc',
+        'id_client',
     ];
-
- 
 }

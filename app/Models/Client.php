@@ -13,6 +13,8 @@ class Client extends Model
         'id',
         'nom',
         'prenom',
+        'societe',
+        'ice',
         'telephone',
         'address',
         'email',

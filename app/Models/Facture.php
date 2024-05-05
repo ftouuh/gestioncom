@@ -10,22 +10,21 @@ class Facture extends Model
     use HasFactory;
     protected $fillable = [
         'id',
+        'facture_numero',
         'date_commande',
-        'nom_client',
-        'prenom_client',
-        'qte',
-        'ref_p',
-        'desc_p',
+        'societe',
+        'ice',
+        'products',
         'mode_reglement',
         'versement',
         'reste',
         'saisi_par',
-        'saisi_le ',
+        'date_facture',
         'total_TTC',
         'TVA',
         'total_HT',
+        'str_ttc',
         'id_client',
-        'id_produit',
     ];
 
     public function Client()
