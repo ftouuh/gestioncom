@@ -20,15 +20,16 @@ class FactureController extends Controller
         return view('admin.management.facture-data',compact('factures','clients','products'));
     }
 
-    public function createfacture(Request $request)
+    
+    public function test(Request $request)
     {
         
         $validatedData = $request->validate([
-            'facture_numero' => 'required|string',
+            'facture_numero' => 'required|numeric',
             'date_commande' => 'date',
             'societe' => 'required|string',
             'ice' => 'required|string',
-            'products' => ['required', 'array'],
+            'products' => 'required',
             'mode_reglement' => 'required|string',
             'versement' => 'numeric',
             'reste' => 'numeric',
@@ -38,43 +39,14 @@ class FactureController extends Controller
             'TVA' => 'required|numeric',
             'total_HT' => 'required|numeric',
             'str_ttc' => 'required|string',
-            'id_client' => 'required|integer', // Assuming id_client is an integer
-          
+            'id_client' => 'required|numeric',
         ]);
         
-        return response()->json(['errors' => $validator->errors()], 422);
         $newFacture = Facture::create($validatedData);
-        return redirect()->back();
     }
+        
 
-    public function updateFacture(Request $request,$id){
-
-        
-        $validatedData = $request->validate([
-            'facture_numero' => 'required|string',
-            'date_commande' => 'date',
-            'societe' => 'required|string',
-            'ice' => 'required|string',
-            'products' => 'required|array',
-            'mode_reglement' => 'required|string',
-            'versement' => 'numeric',
-            'reste' => 'numeric',
-            'saisi_par' => 'nullable|string',
-            'date_facture' => 'required|nullable|date',
-            'total_TTC' => 'required|numeric',
-            'TVA' => 'required|nullable|numeric',
-            'total_HT' => 'required|nullable|numeric',
-            'str_ttc' => 'required|nullable|string',
-            'id_client' => 'required|integer', // Assuming id_client is an integer
-          
-        ]);
-        
-            $facture = Facture::findOrFail($id);
-            $facture->update($validatedData);
-            return redirect()->back();
-        
-        
-    }
+    
 
     public function deleteFacture($id){
         $facture = Facture::findOrFail($id);

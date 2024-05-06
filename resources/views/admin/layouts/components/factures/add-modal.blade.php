@@ -46,8 +46,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="addFactureForm" method="post" action="{{ route('add.factures') }}">
-                        @csrf
+                    <div>
+                        
                         <div class="mb-3">
                             <label for="id_client" class="form-label">Client</label>
                             <select name="id_client" id="id_client" class="form-select">
@@ -148,10 +148,10 @@
                             <input type="text" class="form-control" id="str_ttc" name="str_ttc">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Add Product</button>
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button id="add" class="btn btn-primary">Add Product</button>
                         </div>
-                    </form>
+    </div>
                 </div>
             </div>
         </div>
@@ -337,57 +337,49 @@
                     console.log(products);
             })
 
-            $('form').submit(async function(e){
-                e.preventDefault();
-                const ice = $('#ice').val();
-                const societe = $('#societe').val();
-                const numero_facture =$('#facture_numero').val();
-                const str_ttc =$('#str_ttc').val();
-                const versement =parseFloat($('#versement').val());
-                const reste =parseFloat($('#reste').val());
-                const saisi_par =$('#saisi_par').val();
-                const reglement = $('#mode_reglement').val();
-                const date_commande =$('#date_commande').val();
-                const date_facture =$('#date_facture').val();
-                const id_client =$('#id_client').val();
-                const TTC = parseFloat($('#total_ttc').val());
-                const TVA = parseFloat($('#tva').val());
-                const HT = parseFloat($('#total_ht').val());
+    $('#add').click(async function(e){
+        e.preventDefault();
+        const ice = $('#ice').val();
+        const societe = $('#societe').val();
+        const numero_facture = $('#facture_numero').val();
+        const str_ttc = $('#str_ttc').val();
+        const versement = parseFloat($('#versement').val());
+        const reste = parseFloat($('#reste').val());
+        const saisi_par = $('#saisi_par').val();
+        const reglement = $('#mode_reglement').val();
+        const date_commande = $('#date_commande').val();
+        const date_facture = $('#date_facture').val();
+        const id_client = $('#id_client').val();
+        const TTC = parseFloat($('#total_ttc').val());
+        const TVA = parseFloat($('#tva').val());
+        const HT = parseFloat($('#total_ht').val());
 
-
-                const formdata={
-                    facture_numero:numero_facture,
-                    date_commande:date_commande,
-                    societe:societe,
-                    ice:ice,
-                    products:products,
-                    mode_reglement:reglement,
-                    versement:versement,
-                    reste:reste,
-                    saisi_par:saisi_par,
-                    date_facture:date_facture,
-                    total_TTC:TTC,
-                    TVA:TVA,
-                    total_HT:HT,
-                    str_ttc:str_ttc,
-                    id_client:id_client
-                    
-                }
-                
-                try {
-                    console.log(formdata);
-                    const response = await axios.post('/factures/store', formdata);
-                    
-                   
-                } catch (error) {
-                    console.log(error)
-                }
-
-
-            })
+        var data = {
+            _token : '3bZuHWgEfIZrLJyrPlgUt56zd3i6bjK5H9XqL9Lq',
+            facture_numero: numero_facture,
+            date_commande: date_commande,
+            societe: societe,
+            ice: ice,
+            mode_reglement: reglement,
+            versement: versement,
+            products : JSON.stringify(products),
+            reste: reste,
+            saisi_par: saisi_par,
+            date_facture: date_facture,
+            total_TTC: TTC,
+            TVA: TVA,
+            total_HT: HT,
+            str_ttc: str_ttc,
+            id_client: id_client
+        };
+        console.log(data);
+        try {
+            const response = await axios.post("/factures/test", data);
+        } catch (error) {
+            console.log(error);
+        }
+    });
         });
-
-            
     </script>
     <script>
         function deleteSelect(e){

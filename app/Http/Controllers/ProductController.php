@@ -26,7 +26,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         return response()->json($product);
     }
-    public function createProduct(Request $request){
+    public function createeProduct(Request $request){
         $validatedData= $request->validate([
             'famille'=>'required|String',
             'reference'=>'required|String',
@@ -35,6 +35,7 @@ class ProductController extends Controller
             'Prix_achat'=>'required|Numeric',
             'Prix_unitaire'=>'required|Numeric',
         ]);
+        dd($request);
         $newproduct = Product::create($validatedData);
         return redirect()->back();
     }

@@ -52,13 +52,14 @@ use App\Http\Controllers\ProfileController;
         Route::get('/products',[ProductController::class,'getProducts'])->name('show.products');
         Route::get('/products/{id}',[ProductController::class,'getProductById'])->name('show.product');
         Route::get('/productsjson',[ProductController::class,'getProductsJSON'])->name('products.json');
-        Route::post('/products/store',[ProductController::class,'createProduct'])->name('add.products');
+        Route::post('/products/store',[ProductController::class,'createeProduct'])->name('add.products');
         Route::put('/products/update/{id}', [ProductController::class, 'editProduct'])->name('update.products');
         Route::delete('/products/destroy',[ProductController::class , 'deleteProduct'])->name('destroy.products');
 
     //Factures
     Route::get('/factures',[FactureController::class ,'getFacture'])->name('show.factures');
-    Route::post('/factures/store',[FactureController::class,'createFacture'])->name('add.factures');
+    // Route::post('/factures/store',[])->name('add.factures');
+    Route::post('/factures/test',[FactureController::class,'test'])->name('add.factures');
     Route::put('/factures/update/{id}',[FactureController::class,'updateFacture'])->name('update.factures');
     Route::post('/factures/destroy/{id}', [FactureController::class, 'deleteFacture'])->name('destroy.factures');
 

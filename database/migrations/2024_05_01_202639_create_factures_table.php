@@ -19,17 +19,16 @@ return new class extends Migration
             $table->string('ice');
             $table->json('products');
             $table->string('mode_reglement');
-            $table->decimal('versement', 10, 2); // Assuming decimal field for monetary values
+            $table->decimal('versement', 10, 2); 
             $table->decimal('reste', 10, 2);
             $table->string('saisi_par');
             $table->date('date_facture');
             $table->decimal('total_TTC', 10, 2);
-            $table->decimal('TVA', 5, 2);
+            $table->decimal('TVA', 10, 2);
             $table->decimal('total_HT', 10, 2);
             $table->string('str_ttc');
             $table->unsignedBigInteger('id_client');
             $table->foreign('id_client')->references('id')->on('clients')->ondelete('cascade');
-
             $table->timestamps();
         });
     }
