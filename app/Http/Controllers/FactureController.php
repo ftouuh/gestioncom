@@ -20,14 +20,15 @@ class FactureController extends Controller
         return view('admin.management.facture-data',compact('factures','clients','products'));
     }
 
-    public function createFacture(Request $request)
+    public function createfacture(Request $request)
     {
+        
         $validatedData = $request->validate([
             'facture_numero' => 'required|string',
             'date_commande' => 'date',
             'societe' => 'required|string',
             'ice' => 'required|string',
-            'products' => 'required|array',
+            'products' => ['required', 'array'],
             'mode_reglement' => 'required|string',
             'versement' => 'numeric',
             'reste' => 'numeric',
@@ -40,7 +41,8 @@ class FactureController extends Controller
             'id_client' => 'required|integer', // Assuming id_client is an integer
           
         ]);
-    
+        
+        return response()->json(['errors' => $validator->errors()], 422);
         $newFacture = Facture::create($validatedData);
         return redirect()->back();
     }

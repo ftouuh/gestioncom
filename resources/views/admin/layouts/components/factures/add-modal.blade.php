@@ -343,13 +343,17 @@
                 const societe = $('#societe').val();
                 const numero_facture =$('#facture_numero').val();
                 const str_ttc =$('#str_ttc').val();
-                const versement =$('#versement').val();
-                const reste =$('#reste').val();
+                const versement =parseFloat($('#versement').val());
+                const reste =parseFloat($('#reste').val());
                 const saisi_par =$('#saisi_par').val();
                 const reglement = $('#mode_reglement').val();
                 const date_commande =$('#date_commande').val();
                 const date_facture =$('#date_facture').val();
                 const id_client =$('#id_client').val();
+                const TTC = parseFloat($('#total_ttc').val());
+                const TVA = parseFloat($('#tva').val());
+                const HT = parseFloat($('#total_ht').val());
+
 
                 const formdata={
                     facture_numero:numero_facture,
@@ -362,18 +366,19 @@
                     reste:reste,
                     saisi_par:saisi_par,
                     date_facture:date_facture,
-                    total_TTC:ttc,
-                    TVA:tva,
-                    total_HT:ht,
+                    total_TTC:TTC,
+                    TVA:TVA,
+                    total_HT:HT,
                     str_ttc:str_ttc,
                     id_client:id_client
                     
                 }
                 
                 try {
-             
+                    console.log(formdata);
                     const response = await axios.post('/factures/store', formdata);
-                     console.log('Facture created successfully:', response.data);
+                    
+                   
                 } catch (error) {
                     console.log(error)
                 }
