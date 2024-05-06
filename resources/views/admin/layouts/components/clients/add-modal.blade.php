@@ -18,8 +18,16 @@
                         <input type="text" class="form-control" id="prenom" name="prenom" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="telephone" class="form-label">Telephone</label>
+                        <label for="telephone" class="form-label">telephone</label>
                         <input type="text" class="form-control" id="telephone" name="telephone" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="societe" class="form-label">Societe</label>
+                        <input type="text" class="form-control" id="societe" name="societe" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ice" class="form-label">ICE</label>
+                        <input type="text" class="form-control" id="ice" name="ice" value="">
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label">Address</label>

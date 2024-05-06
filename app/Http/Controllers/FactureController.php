@@ -23,24 +23,24 @@ class FactureController extends Controller
     public function createFacture(Request $request)
     {
         $validatedData = $request->validate([
-        'date_commande'=>'required|Date',
-        'qte'=>'required|Numeric',
-        'nom_client'=>'required|String',
-        'prenom_client'=>'required|String',
-        'ref_p'=>'required|String',
-        'desc_p'=>'required|String',
-        'mode_reglement'=>'required|String',
-        'versement'=>'Numeric',
-        'reste'=>'Numeric',
-        'saisi_par'=>'String',
-        'saisi_le'=>'Date',
-        'total_TTC'=>'required|Numeric',
-        'TVA'=>'Numeric',
-        'total_HT'=>'Numeric',
-        'id_client'=>'required|String',
-        'id_produit'=>'required|String',
+            'facture_numero' => 'required|string',
+            'date_commande' => 'date',
+            'societe' => 'required|string',
+            'ice' => 'required|string',
+            'products' => 'required|array',
+            'mode_reglement' => 'required|string',
+            'versement' => 'numeric',
+            'reste' => 'numeric',
+            'saisi_par' => 'nullable|string',
+            'date_facture' => 'required|date',
+            'total_TTC' => 'required|numeric',
+            'TVA' => 'required|numeric',
+            'total_HT' => 'required|numeric',
+            'str_ttc' => 'required|string',
+            'id_client' => 'required|integer', // Assuming id_client is an integer
+          
         ]);
-
+    
         $newFacture = Facture::create($validatedData);
         return redirect()->back();
     }
@@ -49,23 +49,23 @@ class FactureController extends Controller
 
         
         $validatedData = $request->validate([
-            'date_commande'=>'required|Date',
-            'qte'=>'required|Numeric',
-            'nom_client'=>'required|String',
-            'prenom_client'=>'required|String',
-            'ref_p'=>'required|String',
-            'desc_p'=>'required|String',
-            'mode_reglement'=>'required|String',
-            'versement'=>'Numeric',
-            'reste'=>'Numeric',
-            'saisi_par'=>'String',
-            'saisi_le'=>'Date',
-            'total_TTC'=>'required|Numeric',
-            'TVA'=>'Numeric',
-            'total_HT'=>'Numeric',
-            'id_client'=>'required|String',
-            'id_produit'=>'required|String',
-            ]);
+            'facture_numero' => 'required|string',
+            'date_commande' => 'date',
+            'societe' => 'required|string',
+            'ice' => 'required|string',
+            'products' => 'required|array',
+            'mode_reglement' => 'required|string',
+            'versement' => 'numeric',
+            'reste' => 'numeric',
+            'saisi_par' => 'nullable|string',
+            'date_facture' => 'required|nullable|date',
+            'total_TTC' => 'required|numeric',
+            'TVA' => 'required|nullable|numeric',
+            'total_HT' => 'required|nullable|numeric',
+            'str_ttc' => 'required|nullable|string',
+            'id_client' => 'required|integer', // Assuming id_client is an integer
+          
+        ]);
         
             $facture = Facture::findOrFail($id);
             $facture->update($validatedData);

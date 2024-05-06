@@ -23,6 +23,8 @@
                                         <th>{{ __('Nom') }}</th>
                                         <th>{{ __('Prenom') }}</th>
                                         <th>{{ __('Telephone') }}</th>
+                                        <th>{{ __('Societe') }}</th>
+                                        <th>{{ __('ICE') }}</th>
                                         <th>{{ __('address') }}</th>
                                         <th>{{ __('Email') }}</th>      
                                         <th>{{ __('Action') }}</th>
@@ -35,6 +37,8 @@
                                             <td>{{ $c->nom }}</td>
                                             <td>{{ $c->prenom }}</td>
                                             <td>{{ $c->telephone }}</td>
+                                            <td>{{ $c->societe }}</td>
+                                            <td>{{ $c->ice }}</td>
                                             <td>{{ $c->address }}</td>
                                             <td>{{ $c->email }}</td>
         

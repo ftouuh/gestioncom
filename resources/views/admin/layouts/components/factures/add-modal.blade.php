@@ -89,8 +89,31 @@
                         <input type="hidden" class="form-control" id="prenom_client" name="prenom_client" value="">
                         <input type="hidden" class="form-control" id="pu">
                         <div class="mb-3">
+                            <label for="facture_numero" class="form-label">Numero Facture</label>
+                            <input type="text" class="form-control" id="facture_numero" name="facture_numero">
+                        </div>
+                        <div class="mb-3">
                             <label for="date_commande" class="form-label">Date Commande</label>
                             <input type="date" class="form-control" id="date_commande" name="date_commande">
+                        </div>
+                        <div class="mb-3">
+                            <label for="societe" class="form-label">Societe</label>
+                            <input type="text" class="form-control" id="societe" readonly name="societe">
+                        </div>
+                        <div class="mb-3">
+                            <label for="ice" class="form-label">ICE client</label>
+                            <input type="text" class="form-control" id="ice" readonly name="ice">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mode_reglement" class="form-label">Mode Reglement</label>
+                            <select name="mode_reglement" id="mode_reglement" class="form-select">
+                                <option selected value="">-</option>
+                   
+                                    <option value="Cheque">Cheque</option>
+                                    <option value="Virement">Virement</option>
+                                    <option value="Effet">Effet</option>
+                                    <option value="Espece">Espece</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="versement" class="form-label">Versement</label>
@@ -105,8 +128,8 @@
                             <input type="text" class="form-control" id="saisi_par" name="saisi_par">
                         </div>
                         <div class="mb-3">
-                            <label for="saisi_le" class="form-label">Date Saisi</label>
-                            <input type="date" class="form-control" id="saisi_le" name="saisi_le">
+                            <label for="date_facture" class="form-label">Date Facture</label>
+                            <input type="date" class="form-control" id="date_facture" name="date_facture">
                         </div>
                         <div class="mb-3">
                             <label for="total_ttc" class="form-label">TOTAL_TTC</label>
@@ -119,6 +142,10 @@
                         <div class="mb-3">
                             <label for="total_ht" class="form-label">TOTAL_HT</label>
                             <input type="text" class="form-control" id="total_ht" name="total_ht" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="str_ttc" class="form-label">La Facture est Arrete a la somme de :</label>
+                            <input type="text" class="form-control" id="str_ttc" name="str_ttc">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -159,6 +186,8 @@
                     const client = response.data;
                     $('#nom_client').val(client.nom);
                     $('#prenom_client').val(client.prenom);
+                    $('#societe').val(client.societe);
+                    $('#ice').val(client.ice);
                 } catch (error) {
                     console.error('Error fetching client data:', error);
                 }
@@ -307,7 +336,53 @@
                     confirmer.disabled = false;
                     console.log(products);
             })
+
+            $('form').submit(async function(e){
+                e.preventDefault();
+                const ice = $('#ice').val();
+                const societe = $('#societe').val();
+                const numero_facture =$('#facture_numero').val();
+                const str_ttc =$('#str_ttc').val();
+                const versement =$('#versement').val();
+                const reste =$('#reste').val();
+                const saisi_par =$('#saisi_par').val();
+                const reglement = $('#mode_reglement').val();
+                const date_commande =$('#date_commande').val();
+                const date_facture =$('#date_facture').val();
+                const id_client =$('#id_client').val();
+
+                const formdata={
+                    facture_numero:numero_facture,
+                    date_commande:date_commande,
+                    societe:societe,
+                    ice:ice,
+                    products:products,
+                    mode_reglement:reglement,
+                    versement:versement,
+                    reste:reste,
+                    saisi_par:saisi_par,
+                    date_facture:date_facture,
+                    total_TTC:ttc,
+                    TVA:tva,
+                    total_HT:ht,
+                    str_ttc:str_ttc,
+                    id_client:id_client
+                    
+                }
+                
+                try {
+             
+                    const response = await axios.post('/factures/store', formdata);
+                     console.log('Facture created successfully:', response.data);
+                } catch (error) {
+                    console.log(error)
+                }
+
+
+            })
         });
+
+            
     </script>
     <script>
         function deleteSelect(e){

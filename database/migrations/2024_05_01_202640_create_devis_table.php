@@ -13,18 +13,23 @@ return new class extends Migration
     {
         Schema::create('devis', function (Blueprint $table) {
             $table->id();
+            $table->string('devis_numero');
             $table->date('date_commande');
-            $table->string('nom_client');
-            $table->string('prenom_client');
+            $table->string('societe');
+            $table->string('ice');
+            $table->json('products');
+            $table->string('mode_reglement');
             $table->decimal('versement', 10, 2); // Assuming decimal field for monetary values
             $table->decimal('reste', 10, 2);
             $table->string('saisi_par');
-            $table->timestamp('saisi_le')->nullable();
+            $table->timestamp('date_devis')->nullable();
             $table->decimal('total_TTC', 10, 2);
             $table->decimal('TVA', 5, 2);
             $table->decimal('total_HT', 10, 2);
+            $table->string('str_ttc');
             $table->unsignedBigInteger('id_client');
             $table->foreign('id_client')->references('id')->on('clients')->ondelete('cascade');
+
             $table->timestamps();
         });
     }
