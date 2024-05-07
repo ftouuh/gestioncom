@@ -69,6 +69,7 @@
                                         <option selected value="">Choisi un produit</option>
                                             @foreach($products as $product)
                                                 <option value="{{ $product->id }}">{{ $product->ref }} {{ $product->description }}</option>
+                                                <input type="text" name="tokencsrf" id="tokencsrf" value ="{{$product->token}}" hidden/>
                                             @endforeach
                                         </select>
                                         <div class="mb-3">
@@ -90,7 +91,7 @@
                         <input type="hidden" class="form-control" id="pu">
                         <div class="mb-3">
                             <label for="facture_numero" class="form-label">Numero Facture</label>
-                            <input type="text" class="form-control" id="facture_numero" name="facture_numero">
+                            <input type="number" class="form-control" id="facture_numero" name="facture_numero">
                         </div>
                         <div class="mb-3">
                             <label for="date_commande" class="form-label">Date Commande</label>
@@ -341,7 +342,7 @@
         e.preventDefault();
         const ice = $('#ice').val();
         const societe = $('#societe').val();
-        const numero_facture = $('#facture_numero').val();
+        const numero_facture = parseFloat($('#facture_numero').val());
         const str_ttc = $('#str_ttc').val();
         const versement = parseFloat($('#versement').val());
         const reste = parseFloat($('#reste').val());
@@ -353,9 +354,9 @@
         const TTC = parseFloat($('#total_ttc').val());
         const TVA = parseFloat($('#tva').val());
         const HT = parseFloat($('#total_ht').val());
-
+        const tokencsrf = $("#tokencsrf").val();
         var data = {
-            _token : '3bZuHWgEfIZrLJyrPlgUt56zd3i6bjK5H9XqL9Lq',
+            _token : tokencsrf,
             facture_numero: numero_facture,
             date_commande: date_commande,
             societe: societe,

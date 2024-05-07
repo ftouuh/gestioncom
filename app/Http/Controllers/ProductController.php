@@ -27,18 +27,25 @@ class ProductController extends Controller
         return response()->json($product);
     }
     public function createeProduct(Request $request){
-        $validatedData= $request->validate([
-            'famille'=>'required|String',
-            'reference'=>'required|String',
-            'description'=>'required|String',
-            'quantite'=>'required|Numeric',
-            'Prix_achat'=>'required|Numeric',
-            'Prix_unitaire'=>'required|Numeric',
+
+        $csrfToken = $request->input('_token');
+    
+        $validatedData = $request->validate([
+            'famille' => 'required|string',
+            'reference' => 'required|string',
+            'description' => 'required|string',
+            'quantite' => 'required|numeric',
+            'Prix_achat' => 'required|numeric',
+            'Prix_unitaire' => 'required|numeric',
         ]);
-        dd($request);
-        $newproduct = Product::create($validatedData);
+    
+        $validatedData['token'] = $csrfToken;
+    
+        $newProduct = Product::create($validatedData);
+
         return redirect()->back();
     }
+    
 
     public function editProduct(Request $request,$id){
         $validatedData= $request->validate([
