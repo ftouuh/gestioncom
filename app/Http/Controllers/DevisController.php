@@ -3,62 +3,49 @@
 namespace App\Http\Controllers;
 
 use App\Models\Devis;
+use App\Models\Client;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class DevisController extends Controller
+class devisController extends Controller
 {
-    public function index()
-    {
-        return view();
-    }
     public function getDevis(){
-        $Devis = Devis::All();
-        return view('admin.management.devis-data',compact('Devis'));
+        $devis = Devis::All();
+        $clients = Client::All();
+        $products = Product::All();
+        return view('admin.management.devis-data',compact('devis','clients','products'));
     }
 
+    
     public function createDevis(Request $request)
     {
+        
         $validatedData = $request->validate([
-        'date_commande'=>'required|Date',
-        'nom_client'=>'required|String',
-        'prenom_client'=>'required|String',
-        'versement'=>'Number',
-        'reste'=>'Number',
-        'saisi_par'=>'String',
-        'saisi_le'=>'Date',
-        'total_TTC'=>'required|Number',
-
+            'devis_numero' => 'required|string',
+            'date_commande' => 'date',
+            'societe' => 'required|string',
+            'ice' => 'required|string',
+            'products' => 'required',
+            'mode_reglement' => 'required|string',
+            'versement' => 'numeric',
+            'reste' => 'numeric',
+            'saisi_par' => 'nullable|string',
+            'date_devis' => 'required|date',
+            'total_TTC' => 'required|numeric',
+            'TVA' => 'required|numeric',
+            'total_HT' => 'required|numeric',
+            'str_ttc' => 'required|string',
+            'id_client' => 'required|numeric',
         ]);
-
-        $newDevis = Devis::create($validatedData);
-        return redirect()->back();
-    }
-
-    public function updateDevis(Request $request,$id){
-
         
-        $validatedData = $request->validate([
-            'date_commande'=>'required|Date',
-            'nom_client'=>'required|String',
-            'prenom_client'=>'required|String',
-            'versement'=>'numeric',
-            'reste'=>'numeric',
-            'saisi_par'=>'String',
-            'saisi_le'=>'Date',
-            'total_TTC'=>'required|numeric',
+        $newdevis = Devis::create($validatedData);
+    }
+        
+
     
-            ]);
-        
-            $Devis = Devis::findOrFail($id);
-            $Devis->update($validatedData);
-            return redirect()->back();
-        
-        
-    }
 
-    public function deleteDevis($id){
-        $Devis = Devis::findOrFail($id);
-        $Devis->delete();
-        return redirect()->back();
+    public function deletedevis($id){
+        $devis = Devis::findOrFail($id);
+        $devis->delete();
     }
 }

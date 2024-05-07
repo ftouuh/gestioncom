@@ -2,56 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Invoice;
-use Barryvdh\DomPDF\Facade\Pdf;
-use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Devis;
+use App\Models\Facture;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PDFController extends Controller
 {
-    public function generatePDF(Request $request)
+    public function FgeneratePDF($id)
     {
-        $invoice = Invoice::with('repair', 'repair.user', 'repair.vehicle')->find($request->id);
-    
-        if (!$invoice) {
-            return response()->json(['error' => 'Invoice not found.'], 404);
-        }
-    
-        
-    
-        $pdf = Pdf::loadView('pdfInvoice', ['invoices' => $invoice]);
-    
-        return $pdf->download('garagistInvoice.pdf');
+        $f = Facture::findOrFail($id)->toArray();
+
+        $pdf = PDF::loadView('facturePDF', compact('f'));
+        return $pdf->download($f['facture_numero'] . '.pdf');
     }
-    
+
+    public function DgeneratePDF($id)
+    {
+        $d = Devis::findOrFail($id)->toArray();
+
+        $pdf = PDF::loadView('devisPDF', compact('d'));
+        return $pdf->download($d['devis_numero'] . '.pdf');
+    }
+
+
 }
-// <?php
-  
-// namespace App\Http\Controllers;
-
-// use App\Models\Invoice;
-// use Illuminate\Http\Request;
-// use App\Models\User;
-// use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
-// use Barryvdh\DomPDF\PDF as DomPDFPDF;
-// use PDF;
-    
-// class PDFController extends Controller
-// {
-//     /**
-//      * Display a listing of the resource.
-//      *
-//      * @return \Illuminate\Http\Response
-//      */
-//     public function generatePDF()
-//     {
-//         $invoices = Invoice::with('repair', 'repair.user', 'repair.vehicle')->get(); // Fetch invoices
-
-//         $data = compact('invoices'); // Use compact helper for cleaner data passing
-
-//         $pdf = FacadePdf::loadView('pdfInvoice', $data);  // Specify full path to blade template
-
-//         return $pdf->download('invoice.pdf');
-//     }
-// }
-

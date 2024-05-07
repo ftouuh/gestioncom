@@ -9,10 +9,6 @@ use Illuminate\Http\Request;
 
 class FactureController extends Controller
 {
-    public function index()
-    {
-        return view();
-    }
     public function getFacture(){
         $factures = Facture::All();
         $clients = Client::All();
@@ -25,7 +21,7 @@ class FactureController extends Controller
     {
         
         $validatedData = $request->validate([
-            'facture_numero' => 'required|numeric',
+            'facture_numero' => 'required|string',
             'date_commande' => 'date',
             'societe' => 'required|string',
             'ice' => 'required|string',
@@ -51,6 +47,5 @@ class FactureController extends Controller
     public function deleteFacture($id){
         $facture = Facture::findOrFail($id);
         $facture->delete();
-        return redirect()->back();
     }
 }

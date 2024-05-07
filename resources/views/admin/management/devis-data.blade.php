@@ -1,7 +1,19 @@
 @extends('admin.layouts.home')
 @section('content')
 <div class="main-content">
+<style>
+        .add-new {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
 
+        .add-devis {
+            border: 0;
+            border-radius: 5px;
+            padding: 8px 19px;
+        }
+    </style>
     <div class="page-content">
         <div class="container-fluid">
 
@@ -12,58 +24,73 @@
                         <div class="card-body">
 
                             <h4 class="card-title">Devis List</h4>
+                            <button class="btn-primary add-devis">{{ __('Add New Devis') }}</button>
+                                <p class="card-title-desc">
                             <p class="card-title-desc">
                             </p>
 
                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>{{ __('Client') }}</th>
+                                        <th>{{ __('Num Devis') }}</th>
+                                        <th>{{ __('Societé') }}</th>
+                                        <th>{{ __('ICE') }}</th>
                                         <th>{{ __('Date Commande') }}</th>
+                                        <th>{{ __('Produits') }}</th>
+                                        <th>{{ __('Mode de reglement') }}</th>
                                         <th>{{ __('Versement') }}</th>
                                         <th>{{ __('Reste') }}</th>
-                                        <th>{{ __('Date Saisi') }}</th>
+                                        <th>{{ __('Date Devis') }}</th>
                                         <th>{{ __('TOTAL TTC') }}</th>
                                         <th>{{ __('TVA') }}</th>
                                         <th>{{ __('TOTAL HT') }}</th>
                                         <th>{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
-                                    @foreach ($Devis as $d)
-                                        <tr data-client-id="{{$client->id}}">
-                                            <td>{{ $d->nom_client }} {{ $d->prenom_client }}</td>
+                                    @foreach ($devis as $d)
+                                        <tr data-devis-id="{{$d->id}}">
+                                            <td>{{$d->devis_numero}}</td>
+                                            <td>{{$d->societe}}</td>
+                                            <td>{{$d->ice}}</td>
                                             <td>{{ $d->date_commande }}</td>
+                                            <td><select id="" class="form-select" readonly>
+                                            <option value="">Liste</option>
+                                            @php
+                                                $stringData = $d->products;
+                                                $dataArray = json_decode($stringData);
+                                            @endphp
+                                                @foreach ($dataArray as $p)
+                                                <option value="{{$p[0]}}">{{$p[1]}} {{$p[2]}} | Qte : {{$p[4]}}</option>
+                                                @endforeach
+                                            </select></td>
+                                            <td>{{ $d->mode_reglement }}</td>
                                             <td>{{ $d->versement }}</td>
                                             <td>{{ $d->reste }}</td>
-                                            <td>{{ $d->saisi_le }}</td>
+                                            <td>{{ $d->date_devis }}</td>
                                             <td>{{ $d->total_TTC }}</td>
                                             <td>{{ $d->TVA }}</td>
                                             <td>{{ $d->total_HT }}</td>
 
                                             <td>
-                                                <button type="button" class="btn btn-primary edit-client"
-                                                data-client-id="{{$d->id}}"
-                                                data-client-name="{{$d->name}}"
-                                                data-client-email="{{$d->email}}"
-                                                data-client-address="{{$d->address}}"
-                                                data-client-phone="{{$d->phoneNumber}}"
-                                            >
-                                            {{ __('Edit') }}
-                                            </button>
+                                                <button type="button" class="btn delete-devis" data-devis-id="{{ $d->id }}">
+                                                    <i class="ri-delete-bin-3-line"></i>
+                                                </button>
+                                                <form action="{{ route('pdf.d', ['id' => $d->id]) }}" method="get" style="display: inline;">
+                                                    <button class="btn print-devis" data-devis-id="{{ $d->id }}">
+                                                        <i class="ri-file-info-line"></i>
+                                                    </button>
+                                                </form>
                                             </td>
+
                                         </tr>
+                                        @endforeach
 
-
-
-                                    @include('admin.layouts.components.factures.edit-modal')
-                                    @include('admin.layouts.components.factures.add-modal')
-                                    @include('admin.layouts.components.factures.confirm-modal')
-                                    @include('admin.layouts.components.factures.show-modal')
-
-                                    @endforeach
+                                    @include('admin.layouts.components.devis.edit-modal')
+                                    @include('admin.layouts.components.devis.add-modal')
+                                    @include('admin.layouts.components.devis.confirm-modal')
+                                    @include('admin.layouts.components.devis.show-modal')
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -88,76 +115,24 @@
             </div>
         </div>
     </footer>
-
 </div>
 
-<!-- Modal for editing mechanic -->
-<div class="modal fade" id="editMechanicModal" tabindex="-1" aria-labelledby="editMechanicModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editMechanicModalLabel">Edit User</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="assets/libs/jquery/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-                  <form id="editMechanicForm">
-                    <!-- Form fields -->
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="address" class="form-label">Address</label>
-                        <textarea class="form-control" id="address" name="address"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="phoneNumber" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
-                    </div>
-                  </form>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" id="submitEditMechanicForm">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
+<script>
+    $(document).ready(function() {
 
+        $('.print-devis').click(async function(){
+        const id = $(this).data('devis-id');
+        // console.log('salut');
+        const res = await axios.get('/deviss/print/'+ id);
+    })
+
+    });
+    
+</script>
 @endsection
 
-@push('scripts')
-{{-- <script>
-    $(document).ready(function() {
-        // Handle click event for edit mechanic button
-        $('.edit-mechanic').click(function() {
-            // Get the mechanic ID from data attribute
-            var mechanicId = $(this).data('mechanic-id');
 
-            // Perform AJAX request to fetch mechanic details
-            $.ajax({
-                url: '/mechanics/' + mechanicId + '/edit',
-                type: 'GET',
-                success: function(response) {
-                    // Populate the modal body with the fetched data
-                    $('#editMechanicModal .modal-body').html(response);
-
-                    // Show the modal
-                    $('#editMechanicModal').modal('show');
-                },
-                error: function(xhr, status, error) {
-                    console.error(xhr.responseText);
-                }
-            });
-        });
-    });
-</script> --}}
-@endpush

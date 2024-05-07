@@ -26,4 +26,9 @@ class Devis extends Model
         'str_ttc',
         'id_client',
     ];
+
+    public function Client()
+    {
+        return $this->belongsTo(Client::class);
+    }
 }

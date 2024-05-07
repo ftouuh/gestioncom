@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Facture Modal</title>
+    <title>Add Devis Modal</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -13,8 +13,8 @@
 <body>
 
 
-    <!-- Modal for adding a new facture -->
-    <div class="modal fade" id="addFactureModal" tabindex="-1" aria-labelledby="addFactureModalLabel" aria-hidden="true">
+    <!-- Modal for adding a new devis -->
+    <div class="modal fade" id="addDevisModal" tabindex="-1" aria-labelledby="addDevisModalLabel" aria-hidden="true">
     <style>
         .header{
             display: flex;
@@ -42,7 +42,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addFactureModalLabel">Add New Facture</h5>
+                    <h5 class="modal-title" id="addDevisModalLabel">Add New devis</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -92,8 +92,8 @@
                         <input type="hidden" class="form-control" id="prenom_client" name="prenom_client" value="">
                         <input type="hidden" class="form-control" id="pu">
                         <div class="mb-3">
-                            <label for="facture_numero" class="form-label">Numero Facture</label>
-                            <input type="text" class="form-control" id="facture_numero" name="facture_numero">
+                            <label for="devis_numero" class="form-label">Numero devis</label>
+                            <input type="text" class="form-control" id="devis_numero" name="devis_numero">
                         </div>
                         <div class="mb-3">
                             <label for="date_commande" class="form-label">Date Commande</label>
@@ -131,8 +131,8 @@
                             <input type="text" class="form-control" id="saisi_par" name="saisi_par">
                         </div>
                         <div class="mb-3">
-                            <label for="date_facture" class="form-label">Date Facture</label>
-                            <input type="date" class="form-control" id="date_facture" name="date_facture">
+                            <label for="date_devis" class="form-label">Date devis</label>
+                            <input type="date" class="form-control" id="date_devis" name="date_devis">
                         </div>
                         <div class="mb-3">
                             <label for="total_ttc" class="form-label">TOTAL_TTC</label>
@@ -147,7 +147,7 @@
                             <input type="text" class="form-control" id="total_ht" name="total_ht" readonly>
                         </div>
                         <div class="mb-3">
-                            <label for="str_ttc" class="form-label">La Facture est Arrete a la somme de :</label>
+                            <label for="str_ttc" class="form-label">La devis est Arrete a la somme de :</label>
                             <input type="text" class="form-control" id="str_ttc" name="str_ttc">
                         </div>
                         <div class="modal-footer">
@@ -177,8 +177,8 @@
             var tva = 0;
             var ht = 0;
             // Show modal when the add button is clicked
-            $('.add-facture').click(function() {
-                $('#addFactureModal').modal('show');
+            $('.add-devis').click(function() {
+                $('#addDevisModal').modal('show');
             });
 
             // Fetch client data on id_client change
@@ -344,14 +344,14 @@
         e.preventDefault();
         const ice = $('#ice').val();
         const societe = $('#societe').val();
-        const numero_facture = $('#facture_numero').val();
+        const numero_devis = $('#devis_numero').val();
         const str_ttc = $('#str_ttc').val();
         const versement = parseFloat($('#versement').val());
         const reste = parseFloat($('#reste').val());
         const saisi_par = $('#saisi_par').val();
         const reglement = $('#mode_reglement').val();
         const date_commande = $('#date_commande').val();
-        const date_facture = $('#date_facture').val();
+        const date_devis = $('#date_devis').val();
         const id_client = $('#id_client').val();
         const TTC = parseFloat($('#total_ttc').val());
         const TVA = parseFloat($('#tva').val());
@@ -359,7 +359,7 @@
         const tokencsrf = $("#withtoken").attr("data-tokencsrf");
         var data = {
             _token : tokencsrf,
-            facture_numero: numero_facture,
+            devis_numero: numero_devis,
             date_commande: date_commande,
             societe: societe,
             ice: ice,
@@ -368,7 +368,7 @@
             products : JSON.stringify(products),
             reste: reste,
             saisi_par: saisi_par,
-            date_facture: date_facture,
+            date_devis: date_devis,
             total_TTC: TTC,
             TVA: TVA,
             total_HT: HT,
@@ -377,7 +377,7 @@
         };
         console.log(data);
         try {
-            const response = await axios.post("/factures/test", data);
+            const response = await axios.post("/devis/store", data);
             location.reload()
         } catch (error) {
             console.log(error);

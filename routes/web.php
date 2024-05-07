@@ -61,7 +61,8 @@ use App\Http\Controllers\ProfileController;
     // Route::post('/factures/store',[])->name('add.factures');
     Route::post('/factures/test',[FactureController::class,'test'])->name('add.factures');
     Route::put('/factures/update/{id}',[FactureController::class,'updateFacture'])->name('update.factures');
-    Route::post('/factures/destroy/{id}', [FactureController::class, 'deleteFacture'])->name('destroy.factures');
+    Route::delete('/factures/destroy/{id}', [FactureController::class, 'deleteFacture'])->name('destroy.factures');
+    Route::get('/factures/print/{id}',[FactureController::class,'indexPrint'])->name('show.print');
 
     //Devis
     Route::get('/devis',[DevisController::class ,'getDevis'])->name('show.devis');
@@ -69,11 +70,8 @@ use App\Http\Controllers\ProfileController;
     Route::put('/devis/update/{id}',[DevisController::class,'updateDevis'])->name('update.devis');
     Route::post('/devis/destroy', [DevisController::class, 'deleteDevis'])->name('destroy.devis');
 
-
-    Route::post('/generate-pdf', [PDFController::class, 'generatePDF'])->name('invoice.generatePdf');
-
-
-
+    Route::get('generate-pdf/{id}', [App\Http\Controllers\PDFController::class, 'FgeneratePDF'])->name('pdf.f');
+    Route::get('generate-pdf/{id}', [App\Http\Controllers\PDFController::class, 'DgeneratePDF'])->name('pdf.d');
 
     Route::post('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
     Route::get('/changeLocale/{locale}',function($locale){
