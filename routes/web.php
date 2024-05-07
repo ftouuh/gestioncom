@@ -70,8 +70,8 @@ use App\Http\Controllers\ProfileController;
     Route::put('/devis/update/{id}',[DevisController::class,'updateDevis'])->name('update.devis');
     Route::post('/devis/destroy', [DevisController::class, 'deleteDevis'])->name('destroy.devis');
 
-    Route::get('generate-pdf/{id}', [App\Http\Controllers\PDFController::class, 'FgeneratePDF'])->name('pdf.f');
-    Route::get('generate-pdf/{id}', [App\Http\Controllers\PDFController::class, 'DgeneratePDF'])->name('pdf.d');
+    Route::get('FgeneratePDF/{id}', [App\Http\Controllers\PDFController::class, 'FgeneratePDF'])->name('pdf.f');
+    Route::get('DgeneratePDF/{id}', [App\Http\Controllers\PDFController::class, 'DgeneratePDF'])->name('pdf.d');
 
     Route::post('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
     Route::get('/changeLocale/{locale}',function($locale){
