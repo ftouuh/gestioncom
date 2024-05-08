@@ -62,11 +62,8 @@
                                                 data-user-id="{{ $user->id }}">
                                                 <i class="r ri-delete-bin-3-line"></i>
                                             </button>
-                                            <button type="button" class="btn  show-user"
-                                            data-user-id="{{ $user->id }}">
-                                            <i class=" ri-file-info-line
-                                            "></i>
-                                            </button>
+         
+  
                                         </td>
                                     </tr>
                                     @endforeach

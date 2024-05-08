@@ -23,7 +23,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Liste Des Clients</h4>
+                            <h4 class="card-title">Liste Clients</h4>
                             <button class="btn-primary add-client">{{ __('Ajouter Un Client') }}</button>
 
                             <p class="card-title-desc">

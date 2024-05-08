@@ -24,7 +24,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="add-new">
-                                <h4 class="card-title">{{ __('Liste Des Produits') }}</h4>
+                                <h4 class="card-title">{{ __('Liste Produits') }}</h4>
                                 <button class="btn-primary add-product">{{ __('Ajouter Un Produit') }}</button>
                                 <p class="card-title-desc">
 
@@ -40,10 +40,11 @@
                                     <tr>
                                         <th>{{ __('Famille') }}</th>
                                         <th>{{ __('Reference') }}</th>
-                                        <th>{{ __('Description') }}</th>
+                                        <th>{{ __('Designation') }}</th>
                                         <th>{{ __('Quantite') }}</th>
                                         <th>{{ __('Prix Achat') }}</th>
                                         <th>{{ __('Prix Unitaire') }}</th>
+                                        <th>{{ __('Actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,11 +71,8 @@
                                                 data-product-id="{{ $p->id }}">
                                                 <i class="r ri-delete-bin-3-line"></i>
                                             </button>
-                                            <button type="button" class="btn  show-product"
-                                            data-product-id="{{ $p->id }}">
-                                            <i class=" ri-file-info-line
-                                            "></i>
-                                            </button>
+                                         
+                                  
                                         </td>
                                     </tr>
 

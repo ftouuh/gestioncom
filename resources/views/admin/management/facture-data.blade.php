@@ -23,8 +23,8 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Factures List</h4>
-                            <button class="btn-primary add-facture">{{ __('Add New Facture') }}</button>
+                            <h4 class="card-title">Liste Factures</h4>
+                            <button class="btn-primary add-facture">{{ __('Ajouter une Facture') }}</button>
                                 <p class="card-title-desc">
                             <p class="card-title-desc">
                             </p>
@@ -104,7 +104,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script> © elklie.
+                    <script>document.write(new Date().getFullYear())</script> 
                 </div>
                 <div class="col-sm-6">
                     <div class="text-sm-end d-none d-sm-block">

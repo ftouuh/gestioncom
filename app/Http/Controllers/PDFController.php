@@ -7,21 +7,32 @@ use App\Models\Devis;
 use App\Models\Facture;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Options;
 
 class PDFController extends Controller
 {
-
     public function pdf()
     {
         $f = Facture::findOrFail(1)->toArray();
-        return view('facturePDF',compact('f'));
+        return view('facturePDF', compact('f'));
     }
-    
+
     public function FgeneratePDF($id)
     {
         $f = Facture::findOrFail($id)->toArray();
 
-        $pdf = PDF::loadView('facturePDF', compact('f'));
+
+        $options = [
+            'defaultFont' => 'Arial',
+            'isHtml5ParserEnabled' => true,
+            'isRemoteEnabled' => true,
+            'isPhpEnabled' => true,
+            'isJavascriptEnabled' => true,
+            'paperSize' => 'A4',
+        ];
+
+        // Create PDF instance with specified options
+        $pdf = PDF::loadView('facturePDF', compact('f'), $options);
         return $pdf->download($f['facture_numero'] . '.pdf');
     }
 
@@ -29,9 +40,18 @@ class PDFController extends Controller
     {
         $d = Devis::findOrFail($id)->toArray();
 
-        $pdf = PDF::loadView('devisPDF', compact('d'));
+
+        $options = [
+            'defaultFont' => 'Arial',
+            'isHtml5ParserEnabled' => true,
+            'isRemoteEnabled' => true,
+            'isPhpEnabled' => true,
+            'isJavascriptEnabled' => true,
+            'paperSize' => 'A4',
+        ];
+
+        // Create PDF instance with specified options
+        $pdf = PDF::loadView('devisPDF', compact('d'), $options);
         return $pdf->download($d['devis_numero'] . '.pdf');
     }
-
-
 }

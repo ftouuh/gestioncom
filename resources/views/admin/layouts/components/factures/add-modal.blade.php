@@ -152,7 +152,7 @@
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                            <button id="add" class="btn btn-primary">Ajouer </button>
+                            <button id="add" class="btn btn-primary">Ajouter </button>
                         </div>
     </div>
                 </div>
@@ -382,7 +382,7 @@ async function sendData() {
             mode_reglement: reglement,
             versement: versement,
             products: JSON.stringify(products),
-            reste: reste,
+            reste: reste,   
             saisi_par: saisi_par,
             date_facture: date_facture,
             total_TTC: TTC,
