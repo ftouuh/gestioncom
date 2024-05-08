@@ -21,8 +21,16 @@
                         <input type="text" class="form-control" id="editClientprenom" name="prenom" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="telephone" class="form-label">telephone</label>
+                        <label for="telephone" class="form-label">Telephone</label>
                         <input type="text" class="form-control" id="editClientTelephone" name="telephone" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="societe" class="form-label">Societé</label>
+                        <input type="text" class="form-control" id="editClientSociete" name="societe" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ice" class="form-label">ICE</label>
+                        <input type="text" class="form-control" id="editClientIce" name="ice" value="">
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label">Adresse</label>
@@ -54,6 +62,8 @@ $(document).ready(function() {
         var clientNom = $(this).data('client-nom');
         var clientPrenom = $(this).data('client-prenom');
         var clientTelephone = $(this).data('client-telephone');
+        var clientSociete = $(this).data('client-societe');
+        var clientIce = $(this).data('client-ice');
         var clientAddress = $(this).data('client-address');
         var clientEmail = $(this).data('client-email');
         console.log(clientEmail);
@@ -63,10 +73,11 @@ $(document).ready(function() {
         $('#editClientId').val(clientId);
         $('#editClientnom').val(clientNom);
         $('#editClientprenom').val(clientPrenom);
+        $('#editClientSociete').val(clientSociete);
+        $('#editClientIce').val(clientIce);
         $('#editClientTelephone').val(clientTelephone);
         $('#editClientAddress').val(clientAddress);
         $('#editClientEmail').val(clientEmail);
-
         // Show the modal
         $('#editClientModal').modal('show');
     });
@@ -83,6 +94,6 @@ $(document).ready(function() {
         // Axios request
         axios.put('/clients/update/' + clientId, formData);
         location.reload();
-    });
+    });                 
 });
 </script>

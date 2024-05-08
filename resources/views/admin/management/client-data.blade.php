@@ -61,6 +61,8 @@
                                                 data-client-nom="{{ $c->nom }}"
                                                 data-client-prenom="{{ $c->prenom }}"
                                                 data-client-telephone="{{ $c->telephone }}"
+                                                data-client-societe="{{ $c->societe }}"
+                                                data-client-ice="{{ $c->ice }}"
                                                 data-client-address="{{ $c->address }}"
                                                 data-client-email="{{ $c->email }}">
                                                 <i class=" ri-edit-2-line "></i>

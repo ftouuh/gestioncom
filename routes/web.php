@@ -51,7 +51,6 @@ Route::get('/', [AdminController::class,'Dashboard'])->name('admin.dashboard');
         Route::post('/products/store',[ProductController::class,'createeProduct'])->name('add.products');
         Route::put('/products/update/{id}', [ProductController::class, 'editProduct'])->name('update.products');
         Route::delete('/products/destroy',[ProductController::class , 'deleteProduct'])->name('destroy.products');
-
     //Factures
     Route::get('/factures',[FactureController::class ,'getFacture'])->name('show.factures');
     // Route::post('/factures/store',[])->name('add.factures');
@@ -65,9 +64,7 @@ Route::get('/', [AdminController::class,'Dashboard'])->name('admin.dashboard');
     Route::post('/devis/store',[DevisController::class,'createDevis'])->name('add.devis');
     Route::put('/devis/update/{id}',[DevisController::class,'updateDevis'])->name('update.devis');
     Route::delete('/devis/destroy/{id}', [DevisController::class, 'deleteDevis'])->name('destroy.devis');
-
     Route::get('pdf', [App\Http\Controllers\PDFController::class, 'pdf'])->name('pdf');
-    
     Route::get('FgeneratePDF/{id}', [App\Http\Controllers\PDFController::class, 'FgeneratePDF'])->name('pdf.f');
     Route::get('DgeneratePDF/{id}', [App\Http\Controllers\PDFController::class, 'DgeneratePDF'])->name('pdf.d');
 
@@ -78,8 +75,5 @@ Route::get('/', [AdminController::class,'Dashboard'])->name('admin.dashboard');
     })->name('products.changeLocale');
 
     Route::get('/csrf-token', [CsrfTokenController::class,'fetchCsrfToken'])->name('csrf.token');
-
-
-
 
 require __DIR__ . '/auth.php';

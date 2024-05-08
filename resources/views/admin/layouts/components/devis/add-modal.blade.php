@@ -341,16 +341,30 @@
         const TTC = parseFloat($('#total_ttc').val());
         const TVA = parseFloat($('#tva').val());
         const HT = parseFloat($('#total_ht').val());
-        const tokencsrf = $("#withtoken").attr("data-tokencsrf");
-        var data = {
-            _token : tokencsrf,
+
+        async function fetchCsrfToken() {
+    try {
+        const response = await axios.get('/csrf-token');
+        return response.data.token;
+    } catch (error) {
+        console.error('Failed to fetch CSRF token:', error);
+        throw error;
+    }
+}
+        // Function to send data using Axios
+async function sendData() {
+    try {
+        const tokencsrf = await fetchCsrfToken();
+        
+        const data = {
+            _token: tokencsrf,
             devis_numero: numero_devis,
             date_commande: date_commande,
             societe: societe,
             ice: ice,
             versement: versement,
-            products : JSON.stringify(products),
-            reste: reste,
+            products: JSON.stringify(products),
+            reste: reste,   
             saisi_par: saisi_par,
             date_devis: date_devis,
             total_TTC: TTC,
@@ -358,13 +372,16 @@
             total_HT: HT,
             id_client: id_client
         };
+
         console.log(data);
-        try {
-            const response = await axios.post("/devis/store", data);
-            location.reload()
-        } catch (error) {
-            console.log(error);
-        }
+
+        const response = await axios.post("/devis/store", data);
+        location.reload();
+    } catch (error) {
+        console.error('Error sending data:', error);
+    }
+}
+sendData();
     });
         });
     </script>

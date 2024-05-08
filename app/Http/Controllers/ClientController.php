@@ -43,6 +43,8 @@ class ClientController extends Controller
             'nom'=>'required|String|max:255',
             'prenom'=>'required|String|max:255',
             'telephone'=>'required|String|max:255',
+            'societe'=>'required|String|max:255',
+            'ice'=>'required|String|max:255',
             'address'=>'required|String|max:255',
             'email'=>'required|email|max:255'
         ]);

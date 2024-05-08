@@ -891,15 +891,7 @@ video {
         </table>
       </div>
 
-      <div class="px-14 text-sm text-neutral-700">
-        <p class="text-main font-bold">Mode Règlement : </p>
-        <p>{{$d['mode_reglement']}}</p>
-      </div>
-
-      <div class="px-14 py-10 text-sm text-neutral-700">
-            <p class="text-main font-bold">LA DEVIS EST ARRETEE A LA SOMME DE :</p>
-            <p class="font-bold" style="text-decoration:underline;">{{$d['str_ttc']}} DH</p>
-        </div>
+      
 
         <footer class="fixed bottom-0 left-0 bg-slate-100 w-full text-neutral-600 text-center text-xs py-3">
             <p>481 QUARTIER KNIKRA AZLA TETOUAN</p> <br>
