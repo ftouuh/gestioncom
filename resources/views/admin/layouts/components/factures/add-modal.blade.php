@@ -152,7 +152,7 @@
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                            <button id="add" class="btn btn-primary">Ajouer </button>
+                            <button id="add" class="btn btn-primary">Ajouter </button>
                         </div>
     </div>
                 </div>

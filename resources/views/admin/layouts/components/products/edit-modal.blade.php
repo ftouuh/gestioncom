@@ -21,7 +21,7 @@
                         <input type="text" class="form-control" id="editProductReference" name="reference" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
+                        <label for="description" class="form-label">Designation</label>
                         <input type="text" class="form-control" id="editProductDescription" name="description" value="">
                     </div>
                     <div class="mb-3">

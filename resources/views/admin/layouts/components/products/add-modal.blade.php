@@ -18,7 +18,7 @@
                         <input type="text" class="form-control" id="reference" name="reference" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
+                        <label for="description" class="form-label">Designation</label>
                         <input type="text" class="form-control" id="description" name="description" value="">
                     </div>
                     <div class="mb-3">
