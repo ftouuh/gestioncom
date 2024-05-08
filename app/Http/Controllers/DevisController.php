@@ -26,7 +26,6 @@ class devisController extends Controller
             'societe' => 'required|string',
             'ice' => 'required|string',
             'products' => 'required',
-            'mode_reglement' => 'required|string',
             'versement' => 'numeric',
             'reste' => 'numeric',
             'saisi_par' => 'nullable|string',
@@ -34,7 +33,6 @@ class devisController extends Controller
             'total_TTC' => 'required|numeric',
             'TVA' => 'required|numeric',
             'total_HT' => 'required|numeric',
-            'str_ttc' => 'required|string',
             'id_client' => 'required|numeric',
         ]);
         

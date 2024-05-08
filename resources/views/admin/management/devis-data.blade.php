@@ -37,7 +37,6 @@
                                         <th>{{ __('ICE') }}</th>
                                         <th>{{ __('Date Commande') }}</th>
                                         <th>{{ __('Produits') }}</th>
-                                        <th>{{ __('Mode de reglement') }}</th>
                                         <th>{{ __('Versement') }}</th>
                                         <th>{{ __('Reste') }}</th>
                                         <th>{{ __('Date Devis') }}</th>
@@ -64,7 +63,6 @@
                                                 <option value="{{$p[0]}}">{{$p[1]}} {{$p[2]}} | Qte : {{$p[4]}}</option>
                                                 @endforeach
                                             </select></td>
-                                            <td>{{ $d->mode_reglement }}</td>
                                             <td>{{ $d->versement }}</td>
                                             <td>{{ $d->reste }}</td>
                                             <td>{{ $d->date_devis }}</td>
@@ -104,11 +102,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script> © elklie.
+                    <script>document.write(new Date().getFullYear())</script>
                 </div>
                 <div class="col-sm-6">
                     <div class="text-sm-end d-none d-sm-block">
-                        Crafted with <i class="mdi mdi-heart text-danger"></i> by reda-elklie
+                        NB NORTE 
                     </div>
                 </div>
             </div>

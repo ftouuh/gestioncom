@@ -89,11 +89,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script> © elklie.
+                    <script>document.write(new Date().getFullYear())</script> 
                 </div>
                 <div class="col-sm-6">
                     <div class="text-sm-end d-none d-sm-block">
-                        {{ __('crafted_with_love') }}
+                        NB NORTE
                     </div>
                 </div>
             </div>

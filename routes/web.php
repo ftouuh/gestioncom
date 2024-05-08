@@ -13,14 +13,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CsrfTokenController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
-Route::get('/', function () {
-    if (auth()->check()) {
-        return view('admin.dashboard');
-    } else {
-        return view('auth.login'); // Update this to match your actual login view name
-    }
-})->name('admin.dashboard');
-    Route::get('/admins',[AdminController::class , 'showAdmins'])->name('admin.admins');
+Route::get('/', [AdminController::class,'Dashboard'])->name('admin.dashboard');
+
 
 
 

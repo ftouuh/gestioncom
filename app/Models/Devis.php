@@ -15,7 +15,6 @@ class Devis extends Model
         'societe',
         'ice',
         'products',
-        'mode_reglement',
         'versement',
         'reste',
         'saisi_par',
@@ -23,7 +22,6 @@ class Devis extends Model
         'total_TTC',
         'TVA',
         'total_HT',
-        'str_ttc',
         'id_client',
     ];
 

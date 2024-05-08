@@ -107,17 +107,7 @@
                             <label for="ice" class="form-label">ICE client</label>
                             <input type="text" class="form-control" id="ice" readonly name="ice">
                         </div>
-                        <div class="mb-3">
-                            <label for="mode_reglement" class="form-label">Mode Reglement</label>
-                            <select name="mode_reglement" id="mode_reglement" class="form-select">
-                                <option selected value="">-</option>
-                   
-                                    <option value="Cheque">Cheque</option>
-                                    <option value="Virement">Virement</option>
-                                    <option value="Effet">Effet</option>
-                                    <option value="Espece">Espece</option>
-                            </select>
-                        </div>
+      
                         <div class="mb-3">
                             <label for="versement" class="form-label">Versement</label>
                             <input type="text" class="form-control" id="versement" name="versement">
@@ -146,10 +136,7 @@
                             <label for="total_ht" class="form-label">TOTAL_HT</label>
                             <input type="text" class="form-control" id="total_ht" name="total_ht" readonly>
                         </div>
-                        <div class="mb-3">
-                            <label for="str_ttc" class="form-label">La devis est Arrete a la somme de :</label>
-                            <input type="text" class="form-control" id="str_ttc" name="str_ttc">
-                        </div>
+ 
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                             <button id="add" class="btn btn-primary">Ajouter </button>
@@ -345,11 +332,9 @@
         const ice = $('#ice').val();
         const societe = $('#societe').val();
         const numero_devis = $('#devis_numero').val();
-        const str_ttc = $('#str_ttc').val();
         const versement = parseFloat($('#versement').val());
         const reste = parseFloat($('#reste').val());
         const saisi_par = $('#saisi_par').val();
-        const reglement = $('#mode_reglement').val();
         const date_commande = $('#date_commande').val();
         const date_devis = $('#date_devis').val();
         const id_client = $('#id_client').val();
@@ -363,7 +348,6 @@
             date_commande: date_commande,
             societe: societe,
             ice: ice,
-            mode_reglement: reglement,
             versement: versement,
             products : JSON.stringify(products),
             reste: reste,
@@ -372,7 +356,6 @@
             total_TTC: TTC,
             TVA: TVA,
             total_HT: HT,
-            str_ttc: str_ttc,
             id_client: id_client
         };
         console.log(data);
