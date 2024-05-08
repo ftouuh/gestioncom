@@ -13,12 +13,13 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CsrfTokenController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
-
-
-
-    Route::get('/', function () {
+Route::get('/', function () {
+    if (auth()->check()) {
         return view('admin.dashboard');
-    })->name('admin.dashboard');
+    } else {
+        return view('auth.login'); // Update this to match your actual login view name
+    }
+})->name('admin.dashboard');
     Route::get('/admins',[AdminController::class , 'showAdmins'])->name('admin.admins');
 
 
@@ -76,7 +77,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
     Route::get('FgeneratePDF/{id}', [App\Http\Controllers\PDFController::class, 'FgeneratePDF'])->name('pdf.f');
     Route::get('DgeneratePDF/{id}', [App\Http\Controllers\PDFController::class, 'DgeneratePDF'])->name('pdf.d');
 
-    Route::post('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
+    Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
     Route::get('/changeLocale/{locale}',function($locale){
         session()->put('locale',$locale);
         return redirect()->back();
