@@ -17,7 +17,6 @@ return new class extends Migration
             $table->integer('quantite');
             $table->decimal('Prix_achat', 10, 2);
             $table->decimal('Prix_unitaire', 10, 2);
-            $table->string('token');
             $table->timestamps();
         });
     }

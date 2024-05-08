@@ -356,16 +356,32 @@
         const TTC = parseFloat($('#total_ttc').val());
         const TVA = parseFloat($('#tva').val());
         const HT = parseFloat($('#total_ht').val());
-        const tokencsrf = $("#withtoken").attr("data-tokencsrf");
-        var data = {
-            _token : tokencsrf,
+        
+        // Function to fetch CSRF token from Laravel backend
+async function fetchCsrfToken() {
+    try {
+        const response = await axios.get('/csrf-token');
+        return response.data.token;
+    } catch (error) {
+        console.error('Failed to fetch CSRF token:', error);
+        throw error;
+    }
+}
+
+// Function to send data using Axios
+async function sendData() {
+    try {
+        const tokencsrf = await fetchCsrfToken(); // Get the CSRF token
+        
+        const data = {
+            _token: tokencsrf,
             facture_numero: numero_facture,
             date_commande: date_commande,
             societe: societe,
             ice: ice,
             mode_reglement: reglement,
             versement: versement,
-            products : JSON.stringify(products),
+            products: JSON.stringify(products),
             reste: reste,
             saisi_par: saisi_par,
             date_facture: date_facture,
@@ -375,14 +391,19 @@
             str_ttc: str_ttc,
             id_client: id_client
         };
+
         console.log(data);
-        try {
-            const response = await axios.post("/factures/test", data);
-            location.reload()
-        } catch (error) {
-            console.log(error);
-        }
-    });
+
+        const response = await axios.post("/factures/test", data);
+        location.reload();
+    } catch (error) {
+        console.error('Error sending data:', error);
+    }
+}
+
+// Call sendData function when needed
+sendData();
+        });
         });
     </script>
     <script>

@@ -27,8 +27,6 @@ class ProductController extends Controller
         return response()->json($product);
     }
     public function createeProduct(Request $request){
-
-        $csrfToken = $request->input('_token');
     
         $validatedData = $request->validate([
             'famille' => 'required|string',
@@ -38,8 +36,6 @@ class ProductController extends Controller
             'Prix_achat' => 'required|numeric',
             'Prix_unitaire' => 'required|numeric',
         ]);
-    
-        $validatedData['token'] = $csrfToken;
     
         $newProduct = Product::create($validatedData);
 

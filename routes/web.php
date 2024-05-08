@@ -7,10 +7,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DevisController;
 
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CsrfTokenController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 
 
@@ -70,6 +71,8 @@ use App\Http\Controllers\ProfileController;
     Route::put('/devis/update/{id}',[DevisController::class,'updateDevis'])->name('update.devis');
     Route::delete('/devis/destroy/{id}', [DevisController::class, 'deleteDevis'])->name('destroy.devis');
 
+    Route::get('pdf', [App\Http\Controllers\PDFController::class, 'pdf'])->name('pdf');
+    
     Route::get('FgeneratePDF/{id}', [App\Http\Controllers\PDFController::class, 'FgeneratePDF'])->name('pdf.f');
     Route::get('DgeneratePDF/{id}', [App\Http\Controllers\PDFController::class, 'DgeneratePDF'])->name('pdf.d');
 
@@ -78,6 +81,8 @@ use App\Http\Controllers\ProfileController;
         session()->put('locale',$locale);
         return redirect()->back();
     })->name('products.changeLocale');
+
+    Route::get('/csrf-token', [CsrfTokenController::class,'fetchCsrfToken'])->name('csrf.token');
 
 
 

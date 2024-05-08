@@ -590,11 +590,11 @@ video {
 }
 
 .border-main{
-  border-color: #133a67;
+  border-color: #191d3a;
 }
 
 .bg-main{
-  background-color: #133a67;
+  background-color: #191d3a;
 }
 
 .bg-slate-100{
@@ -690,7 +690,7 @@ video {
 }
 
 .text-main{
-  color: #133a67;
+  color: #191d3a;
 }
 
 .text-neutral-600{
@@ -732,15 +732,36 @@ video {
         <table class="w-full border-collapse border-spacing-0">
           <tbody>
             <tr>
-              <td class="w-full align-top">
-                <div>
-                       
-            </div>
-              </td>
+            <td class="w-full align-top">
+    <div>
+        <?php
+        // Get the absolute path to the image file
+        $imagePath = public_path('assets/images/nbn.png');
 
-              <td class="align-top">
+        // Read the contents of the image file
+        $imageContents = file_get_contents($imagePath);
+
+        if ($imageContents !== false) {
+            // Encode the image contents as Base64
+            $base64Image = 'data:image/png;base64,' . base64_encode($imageContents);
+
+            // Generate the <img> tag with the Base64-encoded image as src
+            echo '<img src="' . $base64Image . '" alt="nbn.png" width="120px">';
+        } else {
+            echo 'Failed to read the image file.';
+        }
+        ?>
+    </div>
+</td>
+
+
+              <td class="align-center">
                 <div class="text-sm">
+                <table class="border-collapse border-spacing-0">
+                    
+                  </table>
                   <table class="border-collapse border-spacing-0">
+                    
                     <tbody>
                       <tr>
                         <td class="border-r pr-4">
@@ -771,10 +792,11 @@ video {
           <tbody>
             <tr>
               <td class="w-1/2 align-top">
-                <div class="text-sm text-neutral-600">
+                <div class="text-sm text-neutral-600"  style="width:100%; display:flex; justify-content:space-between; align-items:center;">
+                    <div>
                     <table>
                         <tr>
-                        <p class="font-bold">Information Client</p> <br>
+                        <p class="font-bold" >Information Client</p> <br>
                         </tr>
                         <tr>
                         <td><span class="font-bold">Société :</span></td>
@@ -784,7 +806,10 @@ video {
                         <td><span class="font-bold">ICE :</span></td>
                         <td style="padding-left:1rem;"><p> {{$f['ice']}}</p></td>
                         </tr>
-                    </table>
+                    </table>  
+                    </div>
+                    <div class="pr-4" style="margin-bottom:1rem;"><h1 style="font-size:30px; color:#191d3a;" class="whitespace-nowrap font-bold text-right">Facture</h1></div>
+
                 </div>
               </td>
             </tr>

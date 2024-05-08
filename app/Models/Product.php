@@ -17,6 +17,5 @@ class Product extends Model
         'quantite',
         'Prix_achat',
         'Prix_unitaire',
-        'token'
     ];
 }

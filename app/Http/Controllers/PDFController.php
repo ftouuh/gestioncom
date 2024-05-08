@@ -10,6 +10,13 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class PDFController extends Controller
 {
+
+    public function pdf()
+    {
+        $f = Facture::findOrFail(1)->toArray();
+        return view('facturePDF',compact('f'));
+    }
+    
     public function FgeneratePDF($id)
     {
         $f = Facture::findOrFail($id)->toArray();
