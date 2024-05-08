@@ -11,7 +11,7 @@
                     @method('DELETE')
                     <input type="hidden" id="deleteId" name="deleteId" value="" />
                 </form>
-                Are you sure you want to delete user with ID: <span id="factureIdPlaceholder"></span> ?
+                Are you sure you want to delete user with ID: <span id="devisIdPlaceholder"></span> ?
             </div>
 
             <div class="modal-footer">
@@ -27,16 +27,16 @@
 <script>
     $(document).ready(function() {
         var id = '';
-        $('.delete-facture').click(function() {
-            id = $(this).data('facture-id'); // Retrieve the user ID
+        $('.delete-devis').click(function() {
+            id = $(this).data('devis-id'); // Retrieve the user ID
             $('#deleteId').val(id); // Populate the deleteId input field with the user ID
-            $('#factureIdPlaceholder').text(id); // Populate the user ID placeholder in the modal body
+            $('#devisIdPlaceholder').text(id); // Populate the user ID placeholder in the modal body
             $('#confirmDeleteModal').modal('show'); // Show the confirmation modal
         });
 
         // Handle confirmation of deletion
         $('#confirmDeleteBtn').click(async function() {
-            await axios.delete('/factures/destroy/'+ id)
+            await axios.delete('/devis/destroy/'+ id)
             location.reload();
         });
 

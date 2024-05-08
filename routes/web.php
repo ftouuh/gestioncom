@@ -68,7 +68,7 @@ use App\Http\Controllers\ProfileController;
     Route::get('/devis',[DevisController::class ,'getDevis'])->name('show.devis');
     Route::post('/devis/store',[DevisController::class,'createDevis'])->name('add.devis');
     Route::put('/devis/update/{id}',[DevisController::class,'updateDevis'])->name('update.devis');
-    Route::post('/devis/destroy', [DevisController::class, 'deleteDevis'])->name('destroy.devis');
+    Route::delete('/devis/destroy/{id}', [DevisController::class, 'deleteDevis'])->name('destroy.devis');
 
     Route::get('FgeneratePDF/{id}', [App\Http\Controllers\PDFController::class, 'FgeneratePDF'])->name('pdf.f');
     Route::get('DgeneratePDF/{id}', [App\Http\Controllers\PDFController::class, 'DgeneratePDF'])->name('pdf.d');
