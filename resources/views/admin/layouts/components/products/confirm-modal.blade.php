@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmer La Suppression</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -11,12 +11,12 @@
                     @method('DELETE')
                     <input type="hidden" id="deleteId" name="deleteId" value="" />
                 </form>
-                Are you sure you want to delete user with ID: <span id="productIdPlaceholder"></span> ?
+                Etes vous sur de vouloir supprimer le client avec l'ID: <span id="productIdPlaceholder"></span> ?
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Supprimer</button>
             </div>
         </div>
     </div>

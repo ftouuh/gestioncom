@@ -24,8 +24,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="add-new">
-                                <h4 class="card-title">{{ __('Products List') }}</h4>
-                                <button class="btn-primary add-product">{{ __('Add New Product') }}</button>
+                                <h4 class="card-title">{{ __('Liste Des Produits') }}</h4>
+                                <button class="btn-primary add-product">{{ __('Ajouter Un Produit') }}</button>
                                 <p class="card-title-desc">
 
                                 </p>
@@ -83,7 +83,6 @@
                                     @include('admin.layouts.components.products.edit-modal')
                                     @include('admin.layouts.components.products.add-modal')
                                     @include('admin.layouts.components.products.confirm-modal')
-                                    @include('admin.layouts.components.products.show-modal')
 
                                 </tbody>
                             </table>

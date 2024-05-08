@@ -4,7 +4,7 @@
 <style>
         .add-new {
             display: flex;
-            width: 100%;
+            widtd: 100%;
             justify-content: space-between;
         }
 
@@ -23,30 +23,30 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Factures List</h4>
-                            <button class="btn-primary add-facture">{{ __('Add New Facture') }}</button>
+                            <h4 class="card-title">Liste Des Factures</h4>
+                            <button class="btn-primary add-facture">{{ __('Ajouter Une Facture') }}</button>
                                 <p class="card-title-desc">
                             <p class="card-title-desc">
                             </p>
 
-                            <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                <thead>
+                            <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; widtd: 100%;">
+                                <tdead>
                                     <tr>
-                                        <th>{{ __('Num Facture') }}</th>
-                                        <th>{{ __('Societé') }}</th>
-                                        <th>{{ __('ICE') }}</th>
-                                        <th>{{ __('Date Commande') }}</th>
-                                        <th>{{ __('Produits') }}</th>
-                                        <th>{{ __('Mode de reglement') }}</th>
-                                        <th>{{ __('Versement') }}</th>
-                                        <th>{{ __('Reste') }}</th>
-                                        <th>{{ __('Date Facture') }}</th>
-                                        <th>{{ __('TOTAL TTC') }}</th>
-                                        <th>{{ __('TVA') }}</th>
-                                        <th>{{ __('TOTAL HT') }}</th>
-                                        <th>{{ __('Action') }}</th>
+                                        <td>{{ __('Numero Facture') }}</td>
+                                        <td>{{ __('Societé') }}</td>
+                                        <td>{{ __('ICE') }}</td>
+                                        <td>{{ __('Date Commande') }}</td>
+                                        <td>{{ __('Produits') }}</td>
+                                        <td>{{ __('Mode de reglement') }}</td>
+                                        <td>{{ __('Versement') }}</td>
+                                        <td>{{ __('Reste') }}</td>
+                                        <td>{{ __('Date Facture') }}</td>
+                                        <td>{{ __('TOTAL TTC') }}</td>
+                                        <td>{{ __('TVA') }}</td>
+                                        <td>{{ __('TOTAL HT') }}</td>
+                                        <td>{{ __('Action') }}</td>
                                     </tr>
-                                </thead>
+                                </tdead>
                                 <tbody>
                                     @foreach ($factures as $f)
                                         <tr data-facture-id="{{$f->id}}">
@@ -76,7 +76,7 @@
                                                 <button type="button" class="btn delete-facture" data-facture-id="{{ $f->id }}">
                                                     <i class="ri-delete-bin-3-line"></i>
                                                 </button>
-                                                <form action="{{ route('pdf.f', ['id' => $f->id]) }}" method="get" style="display: inline;">
+                                                <form action="{{ route('pdf.f', ['id' => $f->id]) }}" metdod="get" style="display: inline;">
                                                     <button class="btn print-facture" data-facture-id="{{ $f->id }}">
                                                         <i class="ri-file-info-line"></i>
                                                     </button>
@@ -89,7 +89,6 @@
                                     @include('admin.layouts.components.factures.edit-modal')
                                     @include('admin.layouts.components.factures.add-modal')
                                     @include('admin.layouts.components.factures.confirm-modal')
-                                    @include('admin.layouts.components.factures.show-modal')
                                     
                                 </tbody>
                             </table>
@@ -109,7 +108,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="text-sm-end d-none d-sm-block">
-                        Crafted with <i class="mdi mdi-heart text-danger"></i> by reda-elklie
+                        Crafted witd <i class="mdi mdi-heart text-danger"></i> by reda-elklie
                     </div>
                 </div>
             </div>
@@ -125,7 +124,7 @@
     $(document).ready(function() {
 
         $('.print-facture').click(async function(){
-        const id = $(this).data('facture-id');
+        const id = $(tdis).data('facture-id');
         // console.log('salut');
         const res = await axios.get('/factures/print/'+ id);
     })

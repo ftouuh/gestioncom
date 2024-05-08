@@ -24,8 +24,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="add-new">
-                                <h4 class="card-title">{{ __('Users List') }}</h4>
-                                <button class="btn-primary add-user">{{ __('Add New User') }}</button>
+                                <h4 class="card-title">{{ __('Liste Utilisateurs') }}</h4>
+                                <button class="btn-primary add-user">{{ __('Ajouter Un Utilisateur') }}</button>
                                 <p class="card-title-desc">
 
                                 </p>
@@ -37,9 +37,9 @@
                                 
                                 <thead>
                                     <tr>
-                                        <th>{{ __('Name') }}</th>
+                                        <th>{{ __('Nom') }}</th>
                                         <th>{{ __('Username') }}</th>
-                                        <th>{{ __('Phone Number') }}</th>
+                                        <th>{{ __('Numero Telephone') }}</th>
                                         <th>{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
@@ -74,7 +74,6 @@
                                     @include('admin.layouts.components.users.edit-modal')
                                     @include('admin.layouts.components.users.add-modal')
                                     @include('admin.layouts.components.users.confirm-modal')
-                                    @include('admin.layouts.components.users.show-modal')
 
                                 </tbody>
                             </table>

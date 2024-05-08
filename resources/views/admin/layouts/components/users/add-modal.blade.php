@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addUserModalLabel">Add New User</h5>
+                <h5 class="modal-title" id="addUserModalLabel">Ajouter Un Utilisateur</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -22,20 +22,20 @@
                         <input type="text" class="form-control" id="username" name="username" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <label for="phoneNumber" class="form-label">Numero Telephone</label>
                         <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
+                        <label for="password" class="form-label">Mot De Passe</label>
                         <input type="password" class="form-control" id="password" name="password" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="password_confirmation" class="form-label">Confirm password</label>
+                        <label for="password_confirmation" class="form-label">Confirmer Le Mot de passe</label>
                         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" value="">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add User</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
                     </div>
                 </form>
             </div>

@@ -1,7 +1,19 @@
 @extends('admin.layouts.home')
 @section('content')
 <div class="main-content">
+<style>
+        .add-new {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
 
+        .add-client {
+            border: 0;
+            border-radius: 5px;
+            padding: 8px 19px;
+        }
+    </style>
     <div class="page-content">
         <div class="container-fluid">
 
@@ -11,8 +23,8 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Client List</h4>
-                            <button class="btn-primary add-client">{{ __('Add New Client') }}</button>
+                            <h4 class="card-title">Liste Des Clients</h4>
+                            <button class="btn-primary add-client">{{ __('Ajouter Un Client') }}</button>
 
                             <p class="card-title-desc">
                             </p>
@@ -69,7 +81,6 @@
                                     @include('admin.layouts.components.clients.edit-modal')
                                     @include('admin.layouts.components.clients.add-modal')
                                     @include('admin.layouts.components.clients.confirm-modal')
-                                    @include('admin.layouts.components.clients.show-modal')
                                 </tbody>
                             </table>
                         </div>
