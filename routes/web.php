@@ -42,7 +42,7 @@ Route::get('/', [AdminController::class,'Dashboard'])->name('admin.dashboard');
         Route::get('/clients/{id}', [ClientController::class, 'getClientsById'])->name('show.client');
         Route::post('/clients/store', [ClientController::class, 'createClient'])->name('add.clients');
         Route::put('/clients/update/{id}',[ClientController::class,'editClient'])->name('update.clients');
-        Route::delete('/clients/destroy/{i', [ClientController::class, 'deleteClient'])->name('destroy.clients');
+        Route::delete('/clients/destroy/{id}', [ClientController::class, 'deleteClient'])->name('destroy.clients');
     
         //products
         Route::get('/products',[ProductController::class,'getProducts'])->name('show.products');
@@ -51,6 +51,7 @@ Route::get('/', [AdminController::class,'Dashboard'])->name('admin.dashboard');
         Route::post('/products/store',[ProductController::class,'createeProduct'])->name('add.products');
         Route::put('/products/update/{id}', [ProductController::class, 'editProduct'])->name('update.products');
         Route::delete('/products/destroy',[ProductController::class , 'deleteProduct'])->name('destroy.products');
+        
     //Factures
     Route::get('/factures',[FactureController::class ,'getFacture'])->name('show.factures');
     // Route::post('/factures/store',[])->name('add.factures');

@@ -796,7 +796,7 @@ video {
                     <div>
                     <table>
                         <tr>
-                        <p class="font-bold" >Information Client</p> <br>
+                        <p class="font-bold" >Informations Client</p> <br>
                         </tr>
                         <tr>
                         <td><span class="font-bold">Société :</span></td>
