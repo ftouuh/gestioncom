@@ -23,11 +23,14 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Liste Clients</h4>
-                            <button class="btn-primary add-client">{{ __('Ajouter Un Client') }}</button>
+                                <h4 class="card-title">Liste Clients</h4>
+                                <button class="btn-primary add-client">{{ __('Ajouter Un Client') }}</button>
 
-                            <p class="card-title-desc">
-                            </p>
+                                <p class="card-title-desc">
+                                    
+                                </p>
+
+
 
                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
@@ -92,7 +95,6 @@
         </div> <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
-
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -107,8 +109,6 @@
             </div>
         </div>
     </footer>
-
 </div>
-
-
 <script src="assets/libs/jquery/jquery.min.js"></script>
+@endsection

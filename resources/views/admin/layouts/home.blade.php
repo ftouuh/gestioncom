@@ -13,5 +13,4 @@
         <div class="rightbar-overlay"></div>
         @include('admin.layouts.partials.scripts')
       </body>
-
 </html>

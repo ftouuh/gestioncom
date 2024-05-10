@@ -23,13 +23,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="add-new">
                                 <h4 class="card-title">{{ __('Liste Produits') }}</h4>
                                 <button class="btn-primary add-product">{{ __('Ajouter Un Produit') }}</button>
                                 <p class="card-title-desc">
 
                                 </p>
-                            </div>
 
                             <table id="datatable-buttons"
                                 class="table table-striped table-bordered dt-responsive nowrap"

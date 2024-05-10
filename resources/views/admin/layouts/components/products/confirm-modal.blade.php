@@ -11,7 +11,7 @@
                     @method('DELETE')
                     <input type="hidden" id="deleteId" name="deleteId" value="" />
                 </form>
-                Etes vous sur de vouloir supprimer le client avec l'ID: <span id="productIdPlaceholder"></span> ?
+                Etes vous sur de vouloir supprimer le produit avec l'ID: <span id="productIdPlaceholder"></span> ?
             </div>
 
             <div class="modal-footer">
