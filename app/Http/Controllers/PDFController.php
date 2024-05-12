@@ -13,8 +13,8 @@ class PDFController extends Controller
 {
     public function pdf()
     {
-        $f = Facture::findOrFail(1)->toArray();
-        return view('facturePDF', compact('f'));
+        $d = Devis::findOrFail(1)->toArray();
+        return view('devisPDF', compact('d'));
     }
 
     public function FgeneratePDF($id)

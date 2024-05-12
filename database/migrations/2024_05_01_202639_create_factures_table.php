@@ -28,7 +28,6 @@ return new class extends Migration
             $table->decimal('total_HT', 10, 2);
             $table->string('str_ttc');
             $table->unsignedBigInteger('id_client');
-            $table->foreign('id_client')->references('id')->on('clients')->ondelete('cascade');
             $table->timestamps();
         });
     }

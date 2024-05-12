@@ -746,7 +746,7 @@ video {
             $base64Image = 'data:image/png;base64,' . base64_encode($imageContents);
 
             // Generate the <img> tag with the Base64-encoded image as src
-            echo '<img src="' . $base64Image . '" alt="nbn.png" width="120px">';
+            echo '<img src="' . $base64Image . '" alt="nbn.png" width="160px">';
         } else {
             echo 'Failed to read the image file.';
         }
@@ -755,28 +755,29 @@ video {
 </td>
 
 
-              <td class="align-center">
-                <div class="text-sm">
+<td class="align-center">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><div class="text-sm">
                 <table class="border-collapse border-spacing-0">
                     
                   </table>
                   <table class="border-collapse border-spacing-0">
-                    
                     <tbody>
                       <tr>
                         <td class="border-r pr-4">
                         <div>
-                            <p class="whitespace-nowrap text-slate-400 text-right">Numero de devis</p>
+                            <p class="whitespace-nowrap text-slate-500 text-right">Numero de Devis</p>
                             <p class="whitespace-nowrap font-bold text-main text-right">{{$d['devis_numero']}}</p>
                           </div>
                         </td>
                         <td class="pl-4">
                         <div>
-                            <p class="whitespace-nowrap text-slate-400 text-right">Date de devis</p>
+                            <p class="whitespace-nowrap text-slate-500 text-right">Date de Devis</p>
                             <p class="whitespace-nowrap font-bold text-main text-right">{{$d['date_devis']}}</p>
-                          </div>
-                          
-                        </td>
+                          </div></td>
                       </tr>
                     </tbody>
                   </table>
@@ -786,7 +787,6 @@ video {
           </tbody>
         </table>
       </div>
-
       <div class="bg-slate-100 px-14 py-6 text-sm">
         <table class="w-full border-collapse border-spacing-0">
           <tbody>
@@ -796,14 +796,14 @@ video {
                     <div>
                     <table>
                         <tr>
-                        <p class="font-bold" >Informations Client</p> <br>
+                        <p class="font-bold" style="color:#191d3a;">Informations Client</p> <br>
                         </tr>
                         <tr>
-                        <td><span class="font-bold">Société :</span></td>
+                        <td><span class="font-bold" style="color:#191d3a;">Société :</span></td>
                         <td style="padding-left:1rem;"><p> {{$d['societe']}}</p></td>
                         </tr>
                         <tr>
-                        <td><span class="font-bold">ICE :</span></td>
+                        <td><span class="font-bold" style="color:#191d3a;">ICE :</span></td>
                         <td style="padding-left:1rem;"><p> {{$d['ice']}}</p></td>
                         </tr>
                     </table>  
@@ -816,7 +816,6 @@ video {
           </tbody>
         </table>
       </div>
-
       <div class="px-14 py-10 text-sm text-neutral-700">
         <table class="w-full border-collapse border-spacing-0">
           <thead>
@@ -857,7 +856,7 @@ video {
                           <tbody>
                             <tr>
                               <td class="border-b p-3">
-                                <div class="whitespace-nowrap text-slate-400">Total HT </div>
+                                <div class="whitespace-nowrap text-slate-500 font-bold">Total HT </div>
                               </td>
                               <td class="border-b p-3 text-right">
                                 <div class="whitespace-nowrap font-bold text-main">{{$d['total_HT']}} DH</div>
@@ -865,7 +864,7 @@ video {
                             </tr>
                             <tr>
                               <td class="p-3">
-                                <div class="whitespace-nowrap text-slate-400">TVA (20%) </div>
+                                <div class="whitespace-nowrap text-slate-500 font-bold">TVA (20%) </div>
                               </td>
                               <td class="p-3 text-right">
                                 <div class="whitespace-nowrap font-bold text-main">{{$d['TVA']}} DH</div>
@@ -893,7 +892,7 @@ video {
 
       
 
-        <footer class="fixed bottom-0 left-0 bg-slate-100 w-full text-neutral-600 text-center text-xs py-3">
+      <footer class="fixed bottom-0 left-0 w-full  text-center text-xs py-3 font-bold" style="background-color:#f1f5f9; color:#191d3a;">
             <p>481 QUARTIER KNIKRA AZLA TETOUAN</p> <br>
         ICE: 003026158000035
           <span class="text-slate-300 px-2">|</span>

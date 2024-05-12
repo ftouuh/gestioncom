@@ -65,7 +65,7 @@ Route::get('/', [AdminController::class,'Dashboard'])->name('admin.dashboard');
     Route::post('/devis/store',[DevisController::class,'createDevis'])->name('add.devis');
     Route::put('/devis/update/{id}',[DevisController::class,'updateDevis'])->name('update.devis');
     Route::delete('/devis/destroy/{id}', [DevisController::class, 'deleteDevis'])->name('destroy.devis');
-    Route::get('pdf', [App\Http\Controllers\PDFController::class, 'pdf'])->name('pdf');
+    Route::get('pdf', [PDFController::class, 'pdf'])->name('pdf');
     Route::get('FgeneratePDF/{id}', [App\Http\Controllers\PDFController::class, 'FgeneratePDF'])->name('pdf.f');
     Route::get('DgeneratePDF/{id}', [App\Http\Controllers\PDFController::class, 'DgeneratePDF'])->name('pdf.d');
 

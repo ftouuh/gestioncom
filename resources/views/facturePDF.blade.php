@@ -733,30 +733,32 @@ video {
           <tbody>
             <tr>
             <td class="w-full align-top">
-    <div>
-        <?php
-        // Get the absolute path to the image file
-        $imagePath = public_path('assets/images/nbn.png');
+              <div>
+                  <?php
+                  // Get the absolute path to the image file
+                  $imagePath = public_path('assets/images/nbn.png');
 
-        // Read the contents of the image file
-        $imageContents = file_get_contents($imagePath);
+                  // Read the contents of the image file
+                  $imageContents = file_get_contents($imagePath);
 
-        if ($imageContents !== false) {
-            // Encode the image contents as Base64
-            $base64Image = 'data:image/png;base64,' . base64_encode($imageContents);
+                  if ($imageContents !== false) {
+                      // Encode the image contents as Base64
+                      $base64Image = 'data:image/png;base64,' . base64_encode($imageContents);
 
-            // Generate the <img> tag with the Base64-encoded image as src
-            echo '<img src="' . $base64Image . '" alt="nbn.png" width="120px">';
-        } else {
-            echo 'Failed to read the image file.';
-        }
-        ?>
-    </div>
-</td>
-
-
+                      // Generate the <img> tag with the Base64-encoded image as src
+                      echo '<img src="' . $base64Image . '" alt="nbn.png" width="160px">';
+                  } else {
+                      echo 'Failed to read the image file.';
+                  }
+                  ?>
+              </div>
+            </td>
               <td class="align-center">
-                <div class="text-sm">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><div class="text-sm">
                 <table class="border-collapse border-spacing-0">
                     
                   </table>
@@ -766,17 +768,15 @@ video {
                       <tr>
                         <td class="border-r pr-4">
                         <div>
-                            <p class="whitespace-nowrap text-slate-400 text-right">Numero de Facture</p>
+                            <p class="whitespace-nowrap text-slate-500 text-right">Numero de Facture</p>
                             <p class="whitespace-nowrap font-bold text-main text-right">{{$f['facture_numero']}}</p>
                           </div>
                         </td>
                         <td class="pl-4">
                         <div>
-                            <p class="whitespace-nowrap text-slate-400 text-right">Date de Facture</p>
+                            <p class="whitespace-nowrap text-slate-500 text-right">Date de Facture</p>
                             <p class="whitespace-nowrap font-bold text-main text-right">{{$f['date_facture']}}</p>
-                          </div>
-                          
-                        </td>
+                          </div></td>
                       </tr>
                     </tbody>
                   </table>
@@ -796,14 +796,14 @@ video {
                     <div>
                     <table>
                         <tr>
-                        <p class="font-bold" >Informations Client</p> <br>
+                        <p class="font-bold" style="color:#191d3a;">Informations Client</p> <br>
                         </tr>
                         <tr>
-                        <td><span class="font-bold">Société :</span></td>
+                        <td><span class="font-bold" style="color:#191d3a;">Société :</span></td>
                         <td style="padding-left:1rem;"><p> {{$f['societe']}}</p></td>
                         </tr>
                         <tr>
-                        <td><span class="font-bold">ICE :</span></td>
+                        <td><span class="font-bold" style="color:#191d3a;">ICE :</span></td>
                         <td style="padding-left:1rem;"><p> {{$f['ice']}}</p></td>
                         </tr>
                     </table>  
@@ -857,7 +857,7 @@ video {
                           <tbody>
                             <tr>
                               <td class="border-b p-3">
-                                <div class="whitespace-nowrap text-slate-400">Total HT </div>
+                                <div class="whitespace-nowrap text-slate-500 font-bold">Total HT </div>
                               </td>
                               <td class="border-b p-3 text-right">
                                 <div class="whitespace-nowrap font-bold text-main">{{$f['total_HT']}} DH</div>
@@ -865,7 +865,7 @@ video {
                             </tr>
                             <tr>
                               <td class="p-3">
-                                <div class="whitespace-nowrap text-slate-400">TVA (20%) </div>
+                                <div class="whitespace-nowrap text-slate-500 font-bold">TVA (20%) </div>
                               </td>
                               <td class="p-3 text-right">
                                 <div class="whitespace-nowrap font-bold text-main">{{$f['TVA']}} DH</div>
@@ -891,17 +891,17 @@ video {
         </table>
       </div>
 
-      <div class="px-14 text-sm text-neutral-700">
+      <div class="px-14 text-sm text-slate-500">
         <p class="text-main font-bold">Mode Règlement : </p>
         <p>{{$f['mode_reglement']}}</p>
       </div>
 
-      <div class="px-14 py-10 text-sm text-neutral-700">
+      <div class="px-14 py-10 text-sm text-slate-500">
             <p class="text-main font-bold">LA FACTURE EST ARRETEE A LA SOMME DE :</p>
             <p class="font-bold" style="text-decoration:underline;">{{$f['str_ttc']}} DH</p>
         </div>
 
-        <footer class="fixed bottom-0 left-0 bg-slate-100 w-full text-neutral-600 text-center text-xs py-3">
+        <footer class="fixed bottom-0 left-0 w-full  text-center text-xs py-3 font-bold" style="background-color:#f1f5f9; color:#191d3a;">
             <p>481 QUARTIER KNIKRA AZLA TETOUAN</p> <br>
         ICE: 003026158000035
           <span class="text-slate-300 px-2">|</span>

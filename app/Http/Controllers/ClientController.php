@@ -24,11 +24,11 @@ class ClientController extends Controller
         $validatedData = $request->validate([
             'nom'=>'required|String|max:255',
             'prenom'=>'required|String|max:255',
-            'telephone'=>'required|String|max:255',
+            'telephone'=>'nullable|String|max:255',
             'societe'=>'required|String|max:255',
             'ice'=>'required|String|max:255',
-            'address'=>'String|max:255',
-            'email'=>'email|max:255'
+            'address'=>'nullable|String|max:255',
+            'email'=>'nullable|email|max:255'
         ]);
 
         $newClient =  Client::create($validatedData);
@@ -42,11 +42,11 @@ class ClientController extends Controller
         $validatedData = $request->validate([
             'nom'=>'required|String|max:255',
             'prenom'=>'required|String|max:255',
-            'telephone'=>'required|String|max:255',
+            'telephone'=>'nullable|String|max:255',
             'societe'=>'required|String|max:255',
             'ice'=>'required|String|max:255',
-            'address'=>'required|String|max:255',
-            'email'=>'required|email|max:255'
+            'address'=>'nullable|String|max:255',
+            'email'=>'nullable|email|max:255'
         ]);
         $client =  Client::findOrFail($id);
         $client->update($validatedData);

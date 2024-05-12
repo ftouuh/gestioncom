@@ -27,9 +27,5 @@ class Facture extends Model
         'id_client',
     ];
 
-    public function Client()
-    {
-        return $this->belongsTo(Client::class);
-    }
     
 }
